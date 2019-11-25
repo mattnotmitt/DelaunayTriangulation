@@ -10,34 +10,35 @@
 class Vertex {
 private:
     int index;
-    float x;
-    float y;
-    float z;
-    std::vector<float> attributes;
+    int dimensions;
 public:
-    explicit Vertex(int index) : index(index), x(0), y(0), z(0), attributes(std::vector<float>()) {};
-    Vertex(int index, float x, float y, float z, const std::vector<float>& attr) : index(index), x(x), y(y), z(z), attributes(attr) {};
+    int getDimensions() const;
+
+    void setDimensions(int dimensions);
+
+private:
+    std::vector<float> coord;
+    std::vector<double> attributes;
+public:
+    explicit Vertex(int index, int dim) : index(index), dimensions(dim), coord(std::vector<float>()), attributes(std::vector<double>()) {};
+
+    Vertex(int index, const std::vector<float> &coord, const std::vector<double> &attr) : index(index), coord(coord),
+                                                                                          attributes(attr) {};
 
     friend std::istream &operator>>(std::istream &is, Vertex &vertex);
+
+    friend std::ofstream &operator<<(std::ofstream &os, Vertex &vertex);
 
     int getIndex() const;
 
     void setIndex(int index);
 
-    float getX() const;
+    const std::vector<float> &getCoord() const;
 
-    void setX(float x);
+    void setCoord(const std::vector<float> &coord);
 
-    float getY() const;
+    const std::vector<double> &getAttributes() const;
 
-    void setY(float y);
-
-    float getZ() const;
-
-    void setZ(float z);
-
-    const std::vector<float> &getAttributes() const;
-
-    void setAttributes(const std::vector<float> &attributes);
+    void setAttributes(const std::vector<double> &attributes);
 };
 
