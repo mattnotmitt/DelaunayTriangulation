@@ -13,6 +13,18 @@
 
 class Mesh {
 private:
+    int vertexAttributes;
+public:
+    int getVertexAttributes() const;
+
+    void setVertexAttributes(int vertexAttributes);
+
+    int getTriangleAttributes() const;
+
+    void setTriangleAttributes(int triangleAttributes);
+
+private:
+    int triangleAttributes;
     std::map<int, Vertex> vertices;
     std::map<int, Triangle> triangles;
 public:
@@ -25,4 +37,5 @@ public:
     void setTriangles(const std::map<int, Triangle> &triangles);
 
     friend std::ostream &operator<<(std::ostream &os, const Mesh &mesh);
+    friend std::ofstream &operator<<(std::ofstream &os, Mesh &mesh);
 };

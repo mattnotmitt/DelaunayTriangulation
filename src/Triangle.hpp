@@ -10,11 +10,12 @@
 class Triangle {
 private:
     int index;
-    std::vector<float> attributes;
+    std::vector<double> attributes;
     std::vector<int> vertices; // int refers to vertex index in mesh
 public:
     explicit Triangle(int index) : index(index), vertices(std::vector<int>()) {};
     friend std::istream &operator>>(std::istream &is, Triangle &triangle);
+    friend std::ofstream &operator<<(std::ofstream &os, Triangle &triangle);
 
     int getIndex() const;
 
@@ -24,7 +25,7 @@ public:
 
     void setVertices(const std::vector<int> &vertices);
 
-    const std::vector<float> &getAttributes() const;
+    const std::vector<double> &getAttributes() const;
 
-    void setAttributes(const std::vector<float> &attributes);
+    void setAttributes(const std::vector<double> &attributes);
 };
