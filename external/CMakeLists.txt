@@ -13,3 +13,10 @@ ExternalProject_Add(catch2-src
 add_library(Catch INTERFACE)
 target_include_directories(Catch INTERFACE catch2)
 add_dependencies(Catch catch2-src)
+
+ExternalProject_Add(eigen3-src
+        URL http://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz
+        URL_HASH SHA512=34cf600914cce719d61511577ef9cd26fbdcb7a6fad1d0ab8396f98b887fac6a5577d3967e84a8f56225cc50de38f3b91f34f447d14312028383e32b34ea1972
+        SOURCE_DIR ${CMAKE_SOURCE_DIR}/external/eigen3
+        LOG_DOWNLOAD ON
+        )

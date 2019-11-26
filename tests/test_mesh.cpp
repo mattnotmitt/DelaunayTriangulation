@@ -5,6 +5,7 @@
 #include <string>
 #include <catch.hpp>
 #include "../src/utils.hpp"
+#include "../src/Triangle.hpp"
 #include "../src/Mesh.hpp"
 
 TEST_CASE("Default mesh is constructed", "[mesh][constructor]") {
@@ -16,7 +17,7 @@ TEST_CASE("Default mesh is constructed", "[mesh][constructor]") {
     REQUIRE(defMesh.getDimensions() == 3);
 }
 
-TEST_CASE("Mesh mutator functionality", "[triangle][mutator]") {
+TEST_CASE("Mesh mutator functionality", "[mesh][mutator]") {
    Mesh defMesh;
    std::map<int, Vertex> vert;
    vert[0] = Vertex();
@@ -80,20 +81,16 @@ TEST_CASE("Invalid files recognised as such", "[mesh][error]") {
     utils::loadFile(infile, "../tests/data/triangulation_files/triangulation_bad_prop.tri");
     REQUIRE_THROWS_WITH(infile >> defMesh, "Error on line 1: First non-empty line of file is not a valid declaration.");
     infile.close();
-    std::ifstream infile1;
-    utils::loadFile(infile1, "../tests/data/triangulation_files/triangulation_bad_vec.tri");
-    REQUIRE_THROWS_WITH(infile1 >> defMesh, "Error on line 2: Vector declaration has 4 parameters, expecting 6");
-    infile1.close();
-    std::ifstream infile2;
-    utils::loadFile(infile2, "../tests/data/triangulation_files/triangulation_bad_non_tri.tri");
-    REQUIRE_THROWS_WITH(infile2 >> defMesh, "Error on line 6: This program only supports cells consisting of 3 points.");
-    infile2.close();
-    std::ifstream infile3;
-    utils::loadFile(infile3, "../tests/data/triangulation_files/triangulation_bad_cell_prop.tri");
-    REQUIRE_THROWS_WITH(infile3 >> defMesh, "Error on line 5: Invalid cell property line.");
-    infile3.close();
-    std::ifstream infile4;
-    utils::loadFile(infile4, "../tests/data/triangulation_files/triangulation_bad_cell.tri");
-    REQUIRE_THROWS_WITH(infile4 >> defMesh, "Error on line 6: Cell declaration has 5 parameters, expecting 6");
-    infile4.close();
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation_bad_vec.tri");
+    REQUIRE_THROWS_WITH(infile >> defMesh, "Error on line 2: Vector declaration has 4 parameters, expecting 6");
+    infile.close();
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation_bad_non_tri.tri");
+    REQUIRE_THROWS_WITH(infile >> defMesh, "Error on line 6: This program only supports cells consisting of 3 points.");
+    infile.close();
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation_bad_cell_prop.tri");
+    REQUIRE_THROWS_WITH(infile >> defMesh, "Error on line 5: Invalid cell property line.");
+    infile.close();
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation_bad_cell.tri");
+    REQUIRE_THROWS_WITH(infile >> defMesh, "Error on line 6: Cell declaration has 5 parameters, expecting 6");
+    infile.close();
 }

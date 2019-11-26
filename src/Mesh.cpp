@@ -125,7 +125,7 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
                 throw std::runtime_error(errorMsg.str());
             }
             iss >> index; // read in type and index values
-            Triangle tri(index);
+            Triangle tri(index, &mesh);
             iss >> tri;
             newTriangles.insert(std::pair<int, Triangle>(index, tri));
             lineNum++;
@@ -157,3 +157,17 @@ std::ofstream &operator<<(std::ofstream &ofs, Mesh &mesh) {
     }
     return ofs;
 }
+
+std::vector<Vertex> Mesh::resolvePoints(std::vector<int> pointIndices) {
+    std::vector<Vertex> points(3);
+    for (int i = 0; i < 3; i++) {
+        points.push_back(vertices[pointIndices[i]]);
+    }
+    return points;
+}
+
+int Mesh::containingTriangle(float x, float y) {
+    return 0;
+}
+
+
