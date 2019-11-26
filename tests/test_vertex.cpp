@@ -1,5 +1,5 @@
 #include <vector>
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 #include "../src/Vertex.hpp"
 
 TEST_CASE("Default vertex is constructed", "[vertex][constructor]") {
