@@ -2,7 +2,6 @@
 // Created by matt on 17/11/2019.
 //
 
-#include <cstdlib>
 #include <ostream>
 #include <fstream>
 #include <iomanip>
@@ -13,54 +12,8 @@ int Vertex::getIndex() const {
     return index;
 }
 
-void Vertex::setIndex(int index) {
-    Vertex::index = index;
-}
-
-const std::vector<double> &Vertex::getAttributes() const {
-    return attributes;
-}
-
-void Vertex::setAttributes(const std::vector<double> &attributes) {
-    Vertex::attributes = attributes;
-}
-
-std::istream &operator>>(std::istream &is, Vertex &vertex) {
-    std::vector<float> coord;
-    std::vector<double> attributes;
-    std::string nextCo;
-    for (int i = 0; i < vertex.dimensions; i++) {
-        is >> nextCo;
-        coord.push_back(std::strtod(nextCo.c_str(), NULL));
-    }
-    vertex.setCoord(coord);
-    std::string nextAt;
-    while (is >> nextAt) {
-        attributes.push_back(std::strtod(nextAt.c_str(), NULL));
-    }
-    vertex.setAttributes(attributes);
-    return is;
-}
-
-std::ofstream &operator<<(std::ofstream &os, Vertex &vertex) {
-    std::stringstream ss;
-    ss << vertex.index;
-    for (int i = 0; i < vertex.dimensions; i++) {
-        ss << std::setprecision(6) << " " << vertex.coord[i];
-    }
-    for (int i = 0; i < vertex.attributes.size(); i++) {
-        ss << std::setprecision(12) << " "  << vertex.attributes[i];
-    }
-    os << ss.str().c_str() << "\n";
-    return os;
-}
-
-const std::vector<float> &Vertex::getCoord() const {
-    return coord;
-}
-
-void Vertex::setCoord(const std::vector<float> &coord) {
-    Vertex::coord = coord;
+void Vertex::setIndex(int ind) {
+    Vertex::index = ind;
 }
 
 int Vertex::getDimensions() const {
@@ -69,4 +22,63 @@ int Vertex::getDimensions() const {
 
 void Vertex::setDimensions(int dimensions) {
     Vertex::dimensions = dimensions;
+}
+
+
+float Vertex::getX() const {
+    return x;
+}
+
+void Vertex::setX(float x) {
+    Vertex::x = x;
+}
+
+float Vertex::getY() const {
+    return y;
+}
+
+void Vertex::setY(float y) {
+    Vertex::y = y;
+}
+
+float Vertex::getZ() const {
+    return z;
+}
+
+void Vertex::setZ(float z) {
+    Vertex::z = z;
+}
+
+const std::vector<double> &Vertex::getAttributes() const {
+    return attributes;
+}
+
+void Vertex::setAttributes(const std::vector<double> &attr) {
+    Vertex::attributes = attr;
+}
+
+std::istream &operator>>(std::istream &is, Vertex &vertex) {
+    std::vector<double> attributes;
+    is >> vertex.x >> vertex.y;
+    if (vertex.dimensions == 3) {
+        is >> vertex.z;
+    }
+    double nextAt;
+    while (is >> nextAt) {
+        attributes.push_back(nextAt);
+    }
+    vertex.setAttributes(attributes);
+    return is;
+}
+
+std::ofstream &operator<<(std::ofstream &os, Vertex &vertex) {
+    os << vertex.index << std::setprecision(6) << " " << vertex.x << " " << vertex.y;
+    if (vertex.dimensions == 3) {
+        os << std::setprecision(6) << " " << vertex.z;
+    }
+    for (int i = 0; i < vertex.attributes.size(); i++) {
+        os << std::setprecision(12) << " "  << vertex.attributes[i];
+    }
+    os << "\n";
+    return os;
 }

@@ -9,23 +9,6 @@
 #include <sstream>
 #include "Triangle.hpp"
 
-std::istream &operator>>(std::istream &is, Triangle &triangle) {
-    std::vector<int> vertices;
-    for (int i = 0; i < 3; i++) {
-        std::string vertexIndex;
-        is >> vertexIndex;
-        vertices.push_back((int) std::strtol(vertexIndex.c_str(), NULL, 10));
-    }
-    triangle.setVertices(vertices);
-    std::vector<double> attributes;
-    std::string next;
-    while (is >> next) {
-        attributes.push_back(std::strtod(next.c_str(), NULL));
-    }
-    triangle.setAttributes(attributes);
-    return is;
-}
-
 int Triangle::getIndex() const {
     return index;
 }
@@ -48,6 +31,23 @@ const std::vector<double> &Triangle::getAttributes() const {
 
 void Triangle::setAttributes(const std::vector<double> &a) {
     Triangle::attributes = a;
+}
+
+std::istream &operator>>(std::istream &is, Triangle &triangle) {
+    std::vector<int> vertices;
+    for (int i = 0; i < 3; i++) {
+        std::string vertexIndex;
+        is >> vertexIndex;
+        vertices.push_back((int) std::strtol(vertexIndex.c_str(), NULL, 10));
+    }
+    triangle.setVertices(vertices);
+    std::vector<double> attributes;
+    std::string next;
+    while (is >> next) {
+        attributes.push_back(std::strtod(next.c_str(), NULL));
+    }
+    triangle.setAttributes(attributes);
+    return is;
 }
 
 std::ofstream &operator<<(std::ofstream &os, Triangle &triangle) {

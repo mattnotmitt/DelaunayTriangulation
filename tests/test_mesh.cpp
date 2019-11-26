@@ -1,0 +1,99 @@
+//
+// Created by matt on 17/11/2019.
+//
+#include <fstream>
+#include <string>
+#include <catch.hpp>
+#include "../src/utils.hpp"
+#include "../src/Mesh.hpp"
+
+TEST_CASE("Default mesh is constructed", "[mesh][constructor]") {
+    Mesh defMesh;
+    REQUIRE(defMesh.getVertices().empty());
+    REQUIRE(defMesh.getTriangles().empty());
+    REQUIRE(defMesh.getVertexAttributes() == 0);
+    REQUIRE(defMesh.getTriangleAttributes() == 0);
+    REQUIRE(defMesh.getDimensions() == 3);
+}
+
+TEST_CASE("Mesh mutator functionality", "[triangle][mutator]") {
+   Mesh defMesh;
+   std::map<int, Vertex> vert;
+   vert[0] = Vertex();
+   std::map<int, Triangle> tris;
+   tris[0] = Triangle();
+   tris[1] = Triangle();
+   defMesh.setVertices(vert);
+   defMesh.setTriangles(tris);
+   defMesh.setVertexAttributes(2);
+   defMesh.setTriangleAttributes(3);
+   defMesh.setDimensions(2);
+    REQUIRE(defMesh.getVertices().size() == 1);
+    REQUIRE(defMesh.getTriangles().size() == 2);
+    REQUIRE(defMesh.getVertexAttributes() == 2);
+    REQUIRE(defMesh.getTriangleAttributes() == 3);
+    REQUIRE(defMesh.getDimensions() == 2);
+}
+
+TEST_CASE("Mesh is populated from file", "[mesh]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
+    infile >> defMesh;
+    infile.close();
+    REQUIRE(defMesh.getVertices().size() == 1467);
+    REQUIRE(defMesh.getVertices().at(0).getAttributes().empty());
+    REQUIRE(defMesh.getTriangles().size() == 2620);
+    REQUIRE(defMesh.getTriangles().at(0).getAttributes().size() == 17);
+}
+
+TEST_CASE("Triangulation file can be populated from mesh", "[mesh]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#4.tri");
+    infile >> defMesh;
+    infile.close();
+    std::ofstream outfile;
+    utils::loadFile(outfile, "../build/triangulation#4_copied.tri");
+    outfile << defMesh;
+    outfile.close();
+}
+
+TEST_CASE("Node file can be populated from mesh", "[mesh]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    utils::loadFile(infile, "../tests/data/vertex_files/vertices#1.node");
+    infile >> defMesh;
+    infile.close();
+    std::ofstream outfile;
+    utils::loadFile(outfile, "../build/vertices#1_copied.node");
+    outfile << defMesh;
+    outfile.close();
+    REQUIRE(defMesh.getVertices().size() == 22);
+    REQUIRE(defMesh.getDimensions() == 2);
+    REQUIRE(defMesh.getTriangles().empty());
+}
+
+TEST_CASE("Invalid files recognised as such", "[mesh][error]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation_bad_prop.tri");
+    REQUIRE_THROWS_WITH(infile >> defMesh, "Error on line 1: First non-empty line of file is not a valid declaration.");
+    infile.close();
+    std::ifstream infile1;
+    utils::loadFile(infile1, "../tests/data/triangulation_files/triangulation_bad_vec.tri");
+    REQUIRE_THROWS_WITH(infile1 >> defMesh, "Error on line 2: Vector declaration has 4 parameters, expecting 6");
+    infile1.close();
+    std::ifstream infile2;
+    utils::loadFile(infile2, "../tests/data/triangulation_files/triangulation_bad_non_tri.tri");
+    REQUIRE_THROWS_WITH(infile2 >> defMesh, "Error on line 6: This program only supports cells consisting of 3 points.");
+    infile2.close();
+    std::ifstream infile3;
+    utils::loadFile(infile3, "../tests/data/triangulation_files/triangulation_bad_cell_prop.tri");
+    REQUIRE_THROWS_WITH(infile3 >> defMesh, "Error on line 5: Invalid cell property line.");
+    infile3.close();
+    std::ifstream infile4;
+    utils::loadFile(infile4, "../tests/data/triangulation_files/triangulation_bad_cell.tri");
+    REQUIRE_THROWS_WITH(infile4 >> defMesh, "Error on line 6: Cell declaration has 5 parameters, expecting 6");
+    infile4.close();
+}
