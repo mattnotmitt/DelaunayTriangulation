@@ -3,18 +3,22 @@
 //
 #include <vector>
 #include "Vertex.hpp"
+#include "IMesh.hpp"
 
 #pragma once
 
 class Triangle {
 private:
     int index;
+    IMesh* owner;
     std::vector<double> attributes;
     std::vector<int> vertices; // int refers to vertex index in mesh
 public:
     // Constructors
-    Triangle() : index(-1) {}
-    explicit Triangle(int index) : index(index) {};
+    explicit Triangle() : index(-1), owner() {}
+    Triangle(int index, IMesh* owner) : index(index), owner(owner) {};
+    // Functionality
+    std::vector<float> circumcirle();
 
     // Getters & Setters
     int getIndex() const;

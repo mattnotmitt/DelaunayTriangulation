@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <fstream>
 #include <sstream>
+#include <Eigen/Dense>
 #include "Triangle.hpp"
 
 int Triangle::getIndex() const {
@@ -60,3 +61,7 @@ std::ofstream &operator<<(std::ofstream &os, Triangle &triangle) {
     return os;
 }
 
+std::vector<float> Triangle::circumcirle() {
+    owner->resolvePoints(vertices);
+    return std::vector<float>();
+}

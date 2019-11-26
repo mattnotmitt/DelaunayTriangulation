@@ -1,3 +1,4 @@
 external/catch2
+external/eigen3
 cmake-build-debug
 build
