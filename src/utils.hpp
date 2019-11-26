@@ -1,4 +1,5 @@
 #include <string>
+#include <stdexcept>
 
 namespace utils {
     int lineLength(const std::string &line);

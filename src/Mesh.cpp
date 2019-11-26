@@ -7,6 +7,7 @@
 #include <sstream>
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
 #include "utils.hpp"
 #include "Mesh.hpp"
 
@@ -60,7 +61,7 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
             int cellCount;
             int cellPoints;
             bool done;
-        } props = {.vertexCount=0, .cellCount=0, .done=false};
+        } props = {0, 0, 0, false};
         int index = -2;
         std::map<int, Vertex> newVertices;
         while (index < props.vertexCount-1) { // Get line from file and store in line variable
