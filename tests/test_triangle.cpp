@@ -1,6 +1,9 @@
 #include <catch2/catch.hpp>
+#include <fstream>
+#include "../src/utils.hpp"
 #include "../src/Triangle.hpp"
 #include "../src/Vertex.hpp"
+#include "../src/Mesh.hpp"
 
 TEST_CASE("Default triangle is constructed", "[triangle][constructor]") {
     Triangle tri;
@@ -19,4 +22,13 @@ TEST_CASE("Triangle mutator functionality", "[triangle][mutator]") {
     REQUIRE(tri.getAttributes().size() == 5);
     REQUIRE(tri.getVertices().size() == 1);
     REQUIRE(tri.getIndex() == 5);
+}
+
+TEST_CASE("Circumcircle functionality", "[triangle][mesh][eigen]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#2.tri");
+    infile >> defMesh;
+    infile.close();
+    defMesh.getTriangles().at(0).circumcirle();
 }

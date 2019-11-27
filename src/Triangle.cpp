@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <Eigen/Dense>
+#include <math.h>
 #include "Triangle.hpp"
 
 int Triangle::getIndex() const {
@@ -61,7 +62,16 @@ std::ofstream &operator<<(std::ofstream &os, Triangle &triangle) {
     return os;
 }
 
-std::vector<float> Triangle::circumcirle() {
-    owner->resolvePoints(vertices);
+std::vector<float> Triangle::circumcirle() const {
+    std::vector<Vertex> resVerts = owner->resolvePoints(vertices);
+    Eigen::Matrix3f m;
+    m << resVerts[0].getX(), resVerts[0].getY(), 1,
+        resVerts[1].getX(), resVerts[1].getY(), 1,
+        resVerts[2].getX(), resVerts[2].getY(), 1;
+    Eigen::Vector3f v(pow(resVerts[0].getX(), 2) + pow(resVerts[0].getY(), 2),
+                      pow(resVerts[1].getX(), 2) + pow(resVerts[1].getY(), 2),
+                      pow(resVerts[2].getX(), 2) + pow(resVerts[2].getY(), 2)
+            );
+    Eigen::Vector3f res = m.colPivHouseholderQr().solve(v);
     return std::vector<float>();
 }

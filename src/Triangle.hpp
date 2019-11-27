@@ -18,7 +18,7 @@ public:
     explicit Triangle() : index(-1), owner() {}
     Triangle(int index, IMesh* owner) : index(index), owner(owner) {};
     // Functionality
-    std::vector<float> circumcirle();
+    std::vector<float> circumcirle() const;
 
     // Getters & Setters
     int getIndex() const;
