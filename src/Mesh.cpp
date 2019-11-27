@@ -160,7 +160,8 @@ std::ofstream &operator<<(std::ofstream &ofs, Mesh &mesh) {
 }
 
 std::vector<Vertex> Mesh::resolvePoints(std::vector<int> pointIndices) {
-    std::vector<Vertex> points(3);
+    std::vector<Vertex> points;
+    points.reserve(3);
     for (int i = 0; i < 3; i++) {
         points.push_back(vertices[pointIndices[i]]);
     }
