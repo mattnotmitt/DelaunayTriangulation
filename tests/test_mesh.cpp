@@ -46,6 +46,7 @@ TEST_CASE("Mesh is populated from file", "[mesh]") {
     REQUIRE(defMesh.getVertices().at(0).getAttributes().empty());
     REQUIRE(defMesh.getTriangles().size() == 2620);
     REQUIRE(defMesh.getTriangles().at(0).getAttributes().size() == 17);
+    REQUIRE(defMesh.getEdges().size() == 4086);
 }
 
 TEST_CASE("Triangulation file can be populated from mesh", "[mesh]") {
@@ -93,4 +94,37 @@ TEST_CASE("Invalid files recognised as such", "[mesh][error]") {
     utils::loadFile(infile, "../tests/data/triangulation_files/triangulation_bad_cell.tri");
     REQUIRE_THROWS_WITH(infile >> defMesh, "Error on line 6: Cell declaration has 5 parameters, expecting 6");
     infile.close();
+}
+
+TEST_CASE("Can find owning triangle", "[own]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#2.tri");
+    infile >> defMesh;
+    infile.close();
+    // Inside triangle 12, but inside triangle 0's circumcircle
+    int contain = defMesh.containingTriangle(68.125, 0.1);
+    REQUIRE(contain == 12);
+}
+
+TEST_CASE("Is Delaunay", "[delaunay]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#3.tri");
+    infile >> defMesh;
+    infile.close();
+    REQUIRE(defMesh.isDelaunay());
+    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
+    infile >> defMesh;
+    infile.close();
+    REQUIRE(!defMesh.isDelaunay());
+}
+
+TEST_CASE("Is Delaunay Fails", "[delaunay][error]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    utils::loadFile(infile, "../tests/data/vertex_files/vertices#1.node");
+    infile >> defMesh;
+    infile.close();
+    REQUIRE_THROWS_WITH(defMesh.isDelaunay(), "Cannot check if mesh is Delaunay Triangulation, no triangles defined.");
 }

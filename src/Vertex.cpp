@@ -16,21 +16,13 @@ void Vertex::setIndex(int ind) {
     Vertex::index = ind;
 }
 
-int Vertex::getDimensions() const {
-    return dimensions;
-}
-
-void Vertex::setDimensions(int dimensions) {
-    Vertex::dimensions = dimensions;
-}
-
-
 float Vertex::getX() const {
     return x;
 }
 
 void Vertex::setX(float x) {
     Vertex::x = x;
+    owner->recalcCircum(index);
 }
 
 float Vertex::getY() const {
@@ -39,6 +31,7 @@ float Vertex::getY() const {
 
 void Vertex::setY(float y) {
     Vertex::y = y;
+    owner->recalcCircum(index);
 }
 
 float Vertex::getZ() const {
@@ -47,6 +40,7 @@ float Vertex::getZ() const {
 
 void Vertex::setZ(float z) {
     Vertex::z = z;
+    owner->recalcCircum(index);
 }
 
 const std::vector<double> &Vertex::getAttributes() const {
@@ -69,6 +63,15 @@ std::istream &operator>>(std::istream &is, Vertex &vertex) {
     }
     vertex.setAttributes(attributes);
     return is;
+}
+
+std::ostream &operator<<(std::ostream &os, Vertex &vertex) {
+    os << std::setprecision(6) << "(" << vertex.x << ", " << vertex.y;
+    if (vertex.dimensions == 3) {
+        os << std::setprecision(6) << ", " << vertex.z;
+    }
+    os << ")";
+    return os;
 }
 
 std::ofstream &operator<<(std::ofstream &os, Vertex &vertex) {
