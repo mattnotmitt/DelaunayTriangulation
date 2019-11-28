@@ -8,6 +8,8 @@
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
+#include <Eigen/Dense>
+#include <set>
 #include "utils.hpp"
 #include "Mesh.hpp"
 
@@ -64,7 +66,7 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
         } props = {0, 0, 0, false};
         int index = -2;
         std::map<int, Vertex> newVertices;
-        while (index < props.vertexCount-1) { // Get line from file and store in line variable
+        while (index < props.vertexCount - 1) { // Get line from file and store in line variable
             std::getline(ifs, line);
             int length = utils::lineLength(line);
             if (line == "\r" || line == "\n") continue; // Skip line if only contains newline
@@ -82,11 +84,12 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
             }
             if (length != mesh.dimensions + mesh.vertexAttributes + 1) {
                 std::stringstream errorMsg;
-                errorMsg << "Vector declaration has " << length << " parameters, expecting " << mesh.dimensions + mesh.vertexAttributes + 1;
+                errorMsg << "Vector declaration has " << length << " parameters, expecting "
+                         << mesh.dimensions + mesh.vertexAttributes + 1;
                 throw std::runtime_error(errorMsg.str());
             }
             iss >> index; // read in type and index values
-            Vertex vec(index, mesh.dimensions);
+            Vertex vec(index, mesh.dimensions, &mesh);
             iss >> vec;
             newVertices.insert(std::pair<int, Vertex>(index, vec));
             lineNum++;
@@ -99,7 +102,7 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
         std::map<int, Triangle> newTriangles;
         index = -2;
         props.done = false;
-        while (index < props.cellCount-1) { // Get line from file and store in line variable
+        while (index < props.cellCount - 1) { // Get line from file and store in line variable
             if (props.done) {
                 std::getline(ifs, line);
             }
@@ -122,7 +125,8 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
             }
             if (length != props.cellPoints + mesh.triangleAttributes + 1) {
                 std::stringstream errorMsg;
-                errorMsg << "Cell declaration has " << length << " parameters, expecting " << props.cellPoints + mesh.triangleAttributes + 1;
+                errorMsg << "Cell declaration has " << length << " parameters, expecting "
+                         << props.cellPoints + mesh.triangleAttributes + 1;
                 throw std::runtime_error(errorMsg.str());
             }
             iss >> index; // read in type and index values
@@ -159,17 +163,110 @@ std::ofstream &operator<<(std::ofstream &ofs, Mesh &mesh) {
     return ofs;
 }
 
-std::vector<Vertex> Mesh::resolvePoints(std::vector<int> pointIndices) {
-    std::vector<Vertex> points;
-    points.reserve(3);
+std::vector<IVertex*> Mesh::resolvePoints(std::vector<int> pointIndices) {
+    std::vector<IVertex*> points;
     for (int i = 0; i < 3; i++) {
-        points.push_back(vertices[pointIndices[i]]);
+        points.push_back(&vertices[pointIndices[i]]);
     }
     return points;
 }
 
 int Mesh::containingTriangle(float x, float y) {
-    return 0;
+    Eigen::Vector2d p(x, y);
+    for (int i = 0; i < triangles.size(); i++) {
+        if (triangles[i].containsPoint(p)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
+bool Mesh::isDelaunay() {
+    if (triangles.empty())
+        throw std::runtime_error("Cannot check if mesh is Delaunay Triangulation, no triangles defined.");
+    for (int i = 0; i < vertices.size(); i++) {
+        Eigen::Vector2d vert(vertices[i].getX(), vertices[i].getY());
+        for (int j = 0; j++ < triangles.size(); j++) {
+            if (triangles[j].circumcircleContainsPoint(vert)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
+std::vector<std::pair<int, int> > Mesh::newEdges(int tri, const std::vector<int> &vert) {
+    std::vector<Mesh::vectPair > nEdges;
+    nEdges.push_back(Mesh::vectPair(vert[0], vert[1]));
+    nEdges.push_back(Mesh::vectPair(vert[1], vert[2]));
+    nEdges.push_back(Mesh::vectPair(vert[0], vert[2]));
+    if (edges.find(nEdges[0]) == edges.end()) {
+        edges.insert(std::pair<Mesh::vectPair, std::vector<int> >(nEdges[0], std::vector<int>(1, tri)));
+    } else edges[nEdges[0]].push_back(tri);
+    if (edges.find(nEdges[1]) == edges.end()) {
+        edges.insert(std::pair<Mesh::vectPair, std::vector<int> >(nEdges[1], std::vector<int>(1, tri)));
+    } else edges[nEdges[1]].push_back(tri);
+    if (edges.find(nEdges[2]) == edges.end()) {
+        edges.insert(std::pair<Mesh::vectPair, std::vector<int> >(nEdges[2], std::vector<int>(1, tri)));
+    } else edges[nEdges[2]].push_back(tri);
+    return nEdges;
+}
+
+const std::map<Mesh::vectPair, std::vector<int> > &Mesh::getEdges() const {
+    return edges;
+}
+
+void Mesh::setEdges(const std::map<Mesh::vectPair, std::vector<int> > &edges) {
+    Mesh::edges = edges;
+}
+
+const std::map<int, std::vector<int> > &Mesh::getVertTri() const {
+    return vertTri;
+}
+
+void Mesh::setVertTri(const std::map<int, std::vector<int> > &vertTri) {
+    Mesh::vertTri = vertTri;
+}
+
+std::vector<int> Mesh::adjacentTriangles(int triInd) {
+    std::vector<int> vert = triangles[triInd].getVertices();
+    Mesh::vectPair paira(vert[0], vert[1]), pairb(vert[1], vert[2]), pairc(vert[0], vert[2]);
+    std::set<int> adjSet;
+    adjSet.insert(edges[paira].begin(), edges[paira].end());
+    adjSet.insert(edges[pairb].begin(), edges[pairb].end());
+    adjSet.insert(edges[pairc].begin(), edges[pairc].end());
+    std::vector<int> adj(adjSet.begin(), adjSet.end());
+    adj.erase(std::find(adj.begin(), adj.end(), triInd));
+    Mesh::vectPair lol(85, 93);
+    return adj;
+}
+
+void Mesh::removeEdges(int triInd, const std::vector<std::pair<int, int> > &rEdge) {
+    for (int i = 0; i < rEdge.size(); i++) {
+        std::vector<int> inds = edges.find(rEdge[i])->second;
+        inds.erase(std::find(inds.begin(), inds.end(), triInd));
+    }
+}
+
+void Mesh::recalcCircum(int pointInd) {
+    std::vector<int> updTris = vertTri[pointInd];
+    for (int i = 0; i < updTris.size(); i++) {
+        Triangle updTri = triangles[updTris[i]];
+        updTri.setCc(updTri.calcCircumcircle());
+    }
+}
+
+void Mesh::updateVertTri(int triInd, std::vector<int> vertInds) {
+    for (int i = 0; i < vertInds.size(); i++) {
+        if (vertTri.find(vertInds[i]) == vertTri.end()) {
+            vertTri.insert(std::pair<int, std::vector<int> >(vertInds[i], std::vector<int>(1, triInd)));
+        } else vertTri[vertInds[i]].push_back(triInd);
+    }
+}
+
+void Mesh::removeVertTri(int triInd, std::vector<int> rVertInds) {
+    for (int i = 0; i < rVertInds.size(); i++) {
+        std::vector<int> inds = vertTri.find(rVertInds[i])->second;
+        inds.erase(std::find(inds.begin(), inds.end(), triInd));
+    }
+}
