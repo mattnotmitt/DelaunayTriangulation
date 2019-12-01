@@ -3,7 +3,6 @@
 //
 #include <vector>
 #include <Eigen/Dense>
-#include "Vertex.hpp"
 #include "IMesh.hpp"
 
 #pragma once
@@ -30,10 +29,10 @@ public:
         double radius;
     };
 private:
-    int index; ///< Index of the triangle (loaded from file) */
-    circumcircle cc; ///< Circumcircle of the current triangle */
-    IMesh *owner; ///< Pointer to interface class of the Mesh the Triangle is part of */
-    std::vector<double> attributes; ///< Vector of attributes of the Triangle (16 poitns of precision */
+    int index; ///< Index of the triangle (loaded from file)
+    circumcircle cc; ///< Circumcircle of the current triangle
+    IMesh *owner; ///< Pointer to interface class of the Mesh the Triangle is part of
+    std::vector<double> attributes; ///< Vector of attributes of the Triangle (16 points of precision)
     std::vector<int> vertices; ///< Vector of vertex indices making up the Triangle
     std::vector<IMesh::edge> edges; ///< Vector of edges making up the Triangle
 public:
@@ -45,13 +44,13 @@ public:
     /**
      * Constructor populating #index and #owner
      * @param index Index of Triangle according to file
-     * @param owner Mesh the Triangle is a part of
+     * @param owner Pointer to Mesh the Triangle is a part of
      */
     Triangle(int index, IMesh *owner) : index(index), owner(owner), cc() {};
     /**
      * Default destructor
      */
-    ~Triangle() {};
+    ~Triangle();
     // Functionality
     /**
      * Calculate the circumcircle of the Triangle
@@ -75,11 +74,11 @@ public:
      * @return Whether the triangle contains the point
      */
     bool containsPoint(const Eigen::Vector2d &p) const;
-
+    double area() const;
     // Getters & Setters
     /**
      * Accessor for private member #index
-     * @return index of Triangle
+     * @return index of Triangle or -1 if not part of mesh
      */
     int getIndex() const;
     /**
@@ -151,11 +150,17 @@ public:
      */
     friend std::istream &operator>>(std::istream &is, Triangle &triangle);
     /**
+     * Output stream operator
+     * @param os
+     * @param triangle
+     * @return
+     */
+    friend std::ostream &operator<<(std::ostream &os, Triangle &triangle);
+    /**
      * Output filestream operator
      * @param ofs
      * @param triangle
      * @return
      */
     friend std::ofstream &operator<<(std::ofstream &ofs, Triangle &triangle);
-
 };

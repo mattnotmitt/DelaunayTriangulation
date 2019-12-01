@@ -159,12 +159,12 @@ std::ofstream &operator<<(std::ofstream &ofs, Mesh &mesh) {
     return ofs;
 }
 
-std::vector<IVertex *> Mesh::resolvePoints(std::vector<int> pointIndices) {
-    std::vector<IVertex*> points;
+std::vector<Vec> Mesh::resolvePoints(std::vector<int> pointIndices) {
+    std::vector<Vec> points;
     for (int i = 0; i < pointIndices.size(); i++) {
         try {
             Vertex vert = vertices.at(pointIndices[i]);
-            points.push_back(&vert);
+            points.push_back(vert.getVec());
         } catch (const std::out_of_range &msg) {
             std::stringstream ss;
             ss << "Vertex " << i << " does not exist.";
@@ -185,17 +185,20 @@ int Mesh::containingTriangle(double x, double y) {
 }
 
 bool Mesh::isDelaunay() {
+    bool is = true;
     if (triangles.empty())
         throw std::runtime_error("Cannot check if mesh is Delaunay Triangulation, no triangles defined.");
     for (int i = 0; i < vertices.size(); i++) {
-        Eigen::Vector2d vert(vertices[i].getX(), vertices[i].getY());
+        Eigen::Vector2d vert(vertices[i].getVec().getX(), vertices[i].getVec().getY());
         for (int j = 0; j++ < triangles.size(); j++) {
             if (triangles[j].circumcircleContainsPoint(vert)) {
-                return false;
+                //std::cout << j << ":" << triangles[j].getCc().x << "," << triangles[j].getCc().y << std::endl;
+                is = false;
+                return is;
             }
         }
     }
-    return true;
+    return is;
 }
 
 std::vector<std::pair<int, int> > Mesh::newEdges(int tri, const std::vector<int> &vert) {

@@ -5,9 +5,9 @@
 TEST_CASE("Default vertex is constructed", "[vertex][constructor]") {
     Vertex vec;
     REQUIRE(vec.getAttributes().empty());
-    REQUIRE(vec.getX() == 0);
-    REQUIRE(vec.getY() == 0);
-    REQUIRE(vec.getZ() == 0);
+    REQUIRE(vec.getVec().getX() == 0);
+    REQUIRE(vec.getVec().getY() == 0);
+    REQUIRE(vec.getVec().getZ() == 0);
     REQUIRE(vec.getIndex() == -1);
 }
 
