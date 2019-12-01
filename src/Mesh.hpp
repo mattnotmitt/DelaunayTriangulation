@@ -41,6 +41,8 @@ public:
     Mesh() : vertexAttributes(0), triangleAttributes(0), dimensions(3) {};
     /**
      * Default destructor
+
+    void setVec(const Vec &vec);
      */
     ~Mesh() {};
 
@@ -49,10 +51,10 @@ public:
      * Implementation of IMesh::resolvePoints
      * Resolves vector of vertex indices to vector of vertex pointers
      * @param pointIndices Vector of indices of vertexes
-     * @return Vector of pointers to vertexes matching the indices given by pointIndices
+     * @return Vector of coordinates matching the indices given by pointIndices
      * @throw std::runtime_error if index is out of range of valid vertices
      */
-    std::vector<IVertex *> resolvePoints(std::vector<int> pointIndices);
+    std::vector<Vec> resolvePoints(std::vector<int> pointIndices);
     /**
      * Checks whether mesh is Delauney
      * @return bool representing whether or not mesh is Delauney
@@ -109,7 +111,14 @@ public:
      * @param rVertInds Old indices used by Triangle
      */
     void removeVertTri(int triInd, std::vector<int> rVertInds);
-
+    template <typename T, typename U>
+    double integrate(T func, U interp) {
+        double res = 0;
+        for (int i = 0; i < triangles.size(); i++) {
+            res += interp(func, triangles[i]);
+        }
+        return res;
+    };
     // Getters & Setters
     /**
      * Accessor to private member #vertices

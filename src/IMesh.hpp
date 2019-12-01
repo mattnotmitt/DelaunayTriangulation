@@ -3,8 +3,8 @@
 //
 
 #pragma once
-#include "IVertex.hpp"
-/**
+#include "Vec.hpp"
+/**const
  * Shallow class allowing Mesh to be imported in classes which Mesh owns
  */
 class IMesh {
@@ -23,7 +23,7 @@ public:
      * @return Vector of pointers to vertexes matching the indices given by pointIndices
      * @throw std::runtime_error if index is out of range of valid vertices
      */
-    virtual std::vector<IVertex*> resolvePoints(std::vector<int> pointIndices) = 0;
+    virtual std::vector<Vec> resolvePoints(std::vector<int> pointIndices) = 0;
     /**
      * Recalculate the Triangle::circumcircle of all Triangles using vertex represented by vertInd
      * - called after coordinates of a Vertex changed using mutator

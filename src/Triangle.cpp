@@ -12,6 +12,7 @@
 #include <stdexcept>
 #include <map>
 #include "Triangle.hpp"
+#include "Vec.hpp"
 
 int Triangle::getIndex() const {
     return index;
@@ -70,31 +71,64 @@ std::ofstream &operator<<(std::ofstream &ofs, Triangle &triangle) {
     return ofs;
 }
 
+/**
+ * @details Given a Triangle made up of points @f$r_1, r_2, r_3@f$ where @f$r_i = \left(\begin{matrix}x_i\\ y_i\end{matrix}\right)@f$,
+ * the circumcentre of the triangle @f$(O_x, O_y)@f$ and the circumcircle's radius @f$R@f$ can be found from
+ *  @f[
+ *		\mathbf{O} = \left(\begin{matrix}
+ *		2O_x \\
+ *		2O_y \\
+ *		R^2 - O_x^2 - O_y^2
+ *		\end{matrix}\right)
+ *	@f]
+ *	@f[
+ *		\left(\begin{matrix}
+ *		x_0^2 + y_0^2 \\
+ *		x_1^2 + y_1^2 \\
+ *		x_2^2 + y_2^2
+ *		\end{matrix}\right)
+ *		=
+ *		\mathbf{O}\left(\begin{matrix}
+ *		x_0 & y_0 & 1 \\
+ *		x_1 & y_1 & 1 \\
+ *		x_2 & y_2 & 1
+ *		\end{matrix}\right)
+ *	@f]
+ *	So by solving for @f$\mathbf{O}@f$ the circumcircle's data can be found
+ */
+
 void Triangle::calcCircumcircle() {
-    std::cout << vertices[0] << std::endl;
-    std::vector<IVertex*> resVerts = owner->resolvePoints(vertices);
-    std::cout << resVerts[0]->getIndex() << std::endl;
+    // Fetch coordinates of triangle's points
+    std::vector<Vec> resVerts = owner->resolvePoints(vertices);
     std::vector<double> centre = std::vector<double>(3);
     Eigen::Matrix3d m;
-    m << resVerts[0]->getX(), resVerts[0]->getY(), 1,
-            resVerts[1]->getX(), resVerts[1]->getY(), 1,
-            resVerts[2]->getX(), resVerts[2]->getY(), 1;
-    Eigen::Vector3d v(pow(resVerts[0]->getX(), 2) + pow(resVerts[0]->getY(), 2),
-                      pow(resVerts[1]->getX(), 2) + pow(resVerts[1]->getY(), 2),
-                      pow(resVerts[2]->getX(), 2) + pow(resVerts[2]->getY(), 2)
+    // Instantiate the rhs matrix
+    m << resVerts[0].getX(), resVerts[0].getY(), 1,
+            resVerts[1].getX(), resVerts[1].getY(), 1,
+            resVerts[2].getX(), resVerts[2].getY(), 1;
+    // Instantiate the lhs vector
+    Eigen::Vector3d v(pow(resVerts[0].getX(), 2) + pow(resVerts[0].getY(), 2),
+                      pow(resVerts[1].getX(), 2) + pow(resVerts[1].getY(), 2),
+                      pow(resVerts[2].getX(), 2) + pow(resVerts[2].getY(), 2)
     );
-    Eigen::Vector3d res = m.colPivHouseholderQr().solve(v);
+    Eigen::Vector3d o = m.colPivHouseholderQr().solve(v); // Solve for O
     Triangle::circumcircle circc = {};
-    circc.x = res(0) / 2.;
-    circc.y = res(1) / 2.;
-    circc.radius = std::sqrt(res(2) + std::pow(circc.x, 2) + std::pow(circc.y, 2));
+    circc.x = o(0) / 2.;
+    circc.y = o(1) / 2.;
+    circc.radius = std::sqrt(o(2) + std::pow(circc.x, 2) + std::pow(circc.y, 2));
     setCc(circc);
 }
-
+/**
+ * @details Given a point @f$\mathbf{p}@f$ and the centre of a circumcirclecircle @f$\mathbf{c}@f$, its distance from the circumcentre can be found
+ * @f[
+ * d = |\mathbf{p}-\mathbf{c}|
+ * @f]
+ * If @f$d < @f$ @ref circumcircle.radius then the point is inside the circumcircle
+ */
 bool Triangle::circumcircleContainsPoint(const Eigen::Vector2d &p) const {
     Eigen::Vector2d c(cc.x, cc.y);
-    double dist = abs((p - c).norm());
-    return (float) dist < (float) cc.radius;
+    float dist = (p - c).norm();
+    return dist < (float) cc.radius;
 }
 
 /**
@@ -112,15 +146,19 @@ y_1-y_3 & y_2-y_3 \\
 
 Eigen::Vector3d Triangle::barycentric(const Eigen::Vector2d &p) const {
     // Barycentric Technique https://en.wikipedia.org/wiki/Barycentric_coordinate_system#Conversion_between_barycentric_and_Cartesian_coordinates
-    std::vector<IVertex*> resVerts = owner->resolvePoints(vertices);
+    std::vector<Vec> resVerts = owner->resolvePoints(vertices);
     Eigen::Matrix2d T;
-    T << resVerts[0]->getX() - resVerts[2]->getX(), resVerts[1]->getX() - resVerts[2]->getX(),
-            resVerts[0]->getY() - resVerts[2]->getY(), resVerts[1]->getY() - resVerts[2]->getY();
-    Eigen::Vector2d r3(resVerts[2]->getX(), resVerts[2]->getY());
+    T << resVerts[0].getX() - resVerts[2].getX(), resVerts[1].getX() - resVerts[2].getX(),
+            resVerts[0].getY() - resVerts[2].getY(), resVerts[1].getY() - resVerts[2].getY();
+    Eigen::Vector2d r3(resVerts[2].getX(), resVerts[2].getY());
     Eigen::Vector2d res = T.inverse() * (p - r3);
     return Eigen::Vector3d(res(0), res(1), 1 - res(0) - res(1));
 }
 
+/**
+ * @details First checks if point is inside pre-computed circumcircle, if it is, computes barycentric coordinates of the point
+ * If all barycentric coordinates @f$ \lambda_i >= 0@f$ then point is inside triangle
+ */
 bool Triangle::containsPoint(const Eigen::Vector2d &p) const {
     if (!circumcircleContainsPoint(p)) return false; // If not in circumcircle, definitely not in triangle, save computationally expensive vector maths
     Eigen::Vector3d bar = barycentric(p);
@@ -154,3 +192,20 @@ bool Triangle::operator==(const Triangle &rhs) const {
 bool Triangle::operator!=(const Triangle &rhs) const {
     return !(rhs == *this);
 }
+
+Triangle::~Triangle() {}
+
+std::ostream &operator<<(std::ostream &os, Triangle &triangle) {
+    std::vector<Vec> vecs = triangle.owner->resolvePoints(triangle.vertices);
+    os << "Triangle " << triangle.index << " is made up of points "  << vecs[0] << ", " << vecs[1] << ", " << vecs[2] << ".";
+    return os;
+}
+
+double Triangle::area() const {
+    std::vector<Vec> verts = owner->resolvePoints(vertices);
+    Eigen::Vector2d a(verts[0].getX(), verts[0].getY());
+    Eigen::Vector2d b(verts[1].getX(), verts[1].getY());
+    Eigen::Vector2d c(verts[2].getX(), verts[2].getY());
+    return .5 * (a-b).norm()*(b-c).norm();
+}
+

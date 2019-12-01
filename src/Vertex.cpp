@@ -16,33 +16,6 @@ void Vertex::setIndex(int ind) {
     Vertex::index = ind;
 }
 
-float Vertex::getX() const {
-    return x;
-}
-
-void Vertex::setX(float x) {
-    Vertex::x = x;
-    owner->recalcCircum(index);
-}
-
-float Vertex::getY() const {
-    return y;
-}
-
-void Vertex::setY(float y) {
-    Vertex::y = y;
-    owner->recalcCircum(index);
-}
-
-float Vertex::getZ() const {
-    return z;
-}
-
-void Vertex::setZ(float z) {
-    Vertex::z = z;
-    owner->recalcCircum(index);
-}
-
 const std::vector<double> &Vertex::getAttributes() const {
     return attributes;
 }
@@ -53,10 +26,7 @@ void Vertex::setAttributes(const std::vector<double> &attr) {
 
 std::istream &operator>>(std::istream &is, Vertex &vertex) {
     std::vector<double> attributes;
-    is >> vertex.x >> vertex.y;
-    if (vertex.dimensions == 3) {
-        is >> vertex.z;
-    }
+    is >> vertex.vec;
     double nextAt;
     while (is >> nextAt) {
         attributes.push_back(nextAt);
@@ -66,19 +36,12 @@ std::istream &operator>>(std::istream &is, Vertex &vertex) {
 }
 
 std::ostream &operator<<(std::ostream &os, Vertex &vertex) {
-    os << std::setprecision(6) << "(" << vertex.x << ", " << vertex.y;
-    if (vertex.dimensions == 3) {
-        os << std::setprecision(6) << ", " << vertex.z;
-    }
-    os << ")";
+    os << vertex.vec;
     return os;
 }
 
 std::ofstream &operator<<(std::ofstream &os, Vertex &vertex) {
-    os << vertex.index << std::setprecision(6) << " " << vertex.x << " " << vertex.y;
-    if (vertex.dimensions == 3) {
-        os << std::setprecision(6) << " " << vertex.z;
-    }
+    os << vertex.index << " " << vertex.vec;
     for (int i = 0; i < vertex.attributes.size(); i++) {
         os << std::setprecision(12) << " "  << vertex.attributes[i];
     }
@@ -88,14 +51,20 @@ std::ofstream &operator<<(std::ofstream &os, Vertex &vertex) {
 
 bool Vertex::operator==(const Vertex &rhs) const {
     return index == rhs.index &&
-           dimensions == rhs.dimensions &&
            owner == rhs.owner &&
-           x == rhs.x &&
-           y == rhs.y &&
-           z == rhs.z &&
+           vec == vec &&
            attributes == rhs.attributes;
 }
 
 bool Vertex::operator!=(const Vertex &rhs) const {
     return !(rhs == *this);
+}
+
+const Vec &Vertex::getVec() const {
+    return vec;
+}
+
+void Vertex::setVec(const Vec &vec) {
+    Vertex::vec = vec;
+    owner->recalcCircum(index);
 }

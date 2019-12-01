@@ -34,4 +34,6 @@ TEST_CASE("Circumcircle functionality", "[triangle][mesh][eigen]") {
     REQUIRE(tri.getCc().x == Approx(67.87956));
     REQUIRE(tri.getCc().y == Approx(-0.16581));
     REQUIRE(tri.getCc().radius == Approx(0.658408));
+    Eigen::Vector2d point(68.3,-0.6);
+    REQUIRE(tri.circumcircleContainsPoint(point));
 }

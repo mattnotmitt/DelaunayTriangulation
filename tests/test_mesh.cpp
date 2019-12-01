@@ -114,7 +114,7 @@ TEST_CASE("Is Delaunay", "[delaunay]") {
     infile >> defMesh;
     infile.close();
     REQUIRE(defMesh.isDelaunay());
-    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
+    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#4.tri");
     infile >> defMesh;
     infile.close();
     REQUIRE(!defMesh.isDelaunay());
@@ -127,4 +127,16 @@ TEST_CASE("Is Delaunay Fails", "[delaunay][error]") {
     infile >> defMesh;
     infile.close();
     REQUIRE_THROWS_WITH(defMesh.isDelaunay(), "Cannot check if mesh is Delaunay Triangulation, no triangles defined.");
+}
+
+double func (double x, double y) {return x*2 + y*2;}
+
+TEST_CASE("Integrates", "[integrate]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#4.tri");
+    infile >> defMesh;
+    infile.close();
+    std::cout << defMesh.integrate(func, Utils::constantValueApprox<double (double,double)>) << std::endl;
+    std::cout << defMesh.integrate(func, Utils::linearInterpolationApprox<double (double,double)>) << std::endl;
 }

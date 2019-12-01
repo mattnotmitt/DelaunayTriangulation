@@ -1,5 +1,6 @@
 #include <string>
 #include <stdexcept>
+#include "Triangle.hpp"
 /**
  * @file utils.hpp
  * Utility functions file
@@ -30,5 +31,13 @@ namespace Utils {
             ss << "Could not open file \"" << fileName << "\".";
             throw std::runtime_error(ss.str());
         }
+    }
+    template <typename T>
+    double constantValueApprox(T func, const Triangle& triangle) {
+        return triangle.area() * func(triangle.getCc().x, triangle.getCc().y);
+    }
+    template <typename T>
+    double linearInterpolationApprox(T func, const Triangle& triangle) {
+        return triangle.area() / 3;
     }
 }
