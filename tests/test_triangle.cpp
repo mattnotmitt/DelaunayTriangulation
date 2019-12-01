@@ -26,12 +26,12 @@ TEST_CASE("Triangle mutator functionality", "[triangle][mutator]") {
 TEST_CASE("Circumcircle functionality", "[triangle][mesh][eigen]") {
     Mesh defMesh;
     std::ifstream infile;
-    utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#2.tri");
+    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#2.tri");
     infile >> defMesh;
     infile.close();
-    Triangle::circumcircle cc = defMesh.getTriangles().at(0).calcCircumcircle();
+    Triangle tri = defMesh.getTriangles().at(0);
     // Values computed by wolframalpha: https://www.wolframalpha.com/input/?i=triangle+%7C+vertex+coordinates+%2868.5163%2C+0.00170467%29+%7C+%2867.8335%2C+-0.822605%29+%7C+%2867.2426%2C+0.000876253%29+%7C+circumcircle
-    REQUIRE(cc.x == Approx(67.87956));
-    REQUIRE(cc.y == Approx(-0.16581));
-    REQUIRE(cc.radius == Approx(0.658408));
+    REQUIRE(tri.getCc().x == Approx(67.87956));
+    REQUIRE(tri.getCc().y == Approx(-0.16581));
+    REQUIRE(tri.getCc().radius == Approx(0.658408));
 }

@@ -85,3 +85,17 @@ std::ofstream &operator<<(std::ofstream &os, Vertex &vertex) {
     os << "\n";
     return os;
 }
+
+bool Vertex::operator==(const Vertex &rhs) const {
+    return index == rhs.index &&
+           dimensions == rhs.dimensions &&
+           owner == rhs.owner &&
+           x == rhs.x &&
+           y == rhs.y &&
+           z == rhs.z &&
+           attributes == rhs.attributes;
+}
+
+bool Vertex::operator!=(const Vertex &rhs) const {
+    return !(rhs == *this);
+}
