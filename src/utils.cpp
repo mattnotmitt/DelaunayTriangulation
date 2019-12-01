@@ -7,7 +7,7 @@
 #include <sstream>
 #include "utils.hpp"
 
-namespace utils {
+namespace Utils {
     int lineLength(const std::string &line) {
         std::istringstream iss(line);
         return std::distance(std::istream_iterator<std::string>(iss), std::istream_iterator<std::string>());

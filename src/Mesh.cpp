@@ -49,10 +49,6 @@ int Mesh::getDimensions() const {
     return dimensions;
 }
 
-void Mesh::setDimensions(int dim) {
-    Mesh::dimensions = dim;
-}
-
 std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
     std::string line;
     int lineNum = 1;
@@ -68,7 +64,7 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
         std::map<int, Vertex> newVertices;
         while (index < props.vertexCount - 1) { // Get line from file and store in line variable
             std::getline(ifs, line);
-            int length = utils::lineLength(line);
+            int length = Utils::lineLength(line);
             if (line == "\r" || line == "\n") continue; // Skip line if only contains newline
             std::istringstream iss(line);
             if (iss.str().empty()) continue; // Skip line if stream is empty
@@ -106,7 +102,7 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
             if (props.done) {
                 std::getline(ifs, line);
             }
-            int length = utils::lineLength(line);
+            int length = Utils::lineLength(line);
             if (line == "\r" || line == "\n") continue; // Skip line if only contains newline
             std::istringstream iss(line);
             if (iss.str().empty()) continue; // Skip line if stream is empty
@@ -163,15 +159,22 @@ std::ofstream &operator<<(std::ofstream &ofs, Mesh &mesh) {
     return ofs;
 }
 
-std::vector<IVertex*> Mesh::resolvePoints(std::vector<int> pointIndices) {
+std::vector<IVertex *> Mesh::resolvePoints(std::vector<int> pointIndices) {
     std::vector<IVertex*> points;
-    for (int i = 0; i < 3; i++) {
-        points.push_back(&vertices[pointIndices[i]]);
+    for (int i = 0; i < pointIndices.size(); i++) {
+        try {
+            Vertex vert = vertices.at(pointIndices[i]);
+            points.push_back(&vert);
+        } catch (const std::out_of_range &msg) {
+            std::stringstream ss;
+            ss << "Vertex " << i << " does not exist.";
+            throw std::runtime_error(ss.str());
+        }
     }
     return points;
 }
 
-int Mesh::containingTriangle(float x, float y) {
+int Mesh::containingTriangle(double x, double y) {
     Eigen::Vector2d p(x, y);
     for (int i = 0; i < triangles.size(); i++) {
         if (triangles[i].containsPoint(p)) {
@@ -196,48 +199,35 @@ bool Mesh::isDelaunay() {
 }
 
 std::vector<std::pair<int, int> > Mesh::newEdges(int tri, const std::vector<int> &vert) {
-    std::vector<Mesh::vectPair > nEdges;
-    nEdges.push_back(Mesh::vectPair(vert[0], vert[1]));
-    nEdges.push_back(Mesh::vectPair(vert[1], vert[2]));
-    nEdges.push_back(Mesh::vectPair(vert[0], vert[2]));
+    std::vector<Mesh::edge > nEdges;
+    nEdges.push_back(Mesh::edge(vert[0], vert[1]));
+    nEdges.push_back(Mesh::edge(vert[1], vert[2]));
+    nEdges.push_back(Mesh::edge(vert[0], vert[2]));
     if (edges.find(nEdges[0]) == edges.end()) {
-        edges.insert(std::pair<Mesh::vectPair, std::vector<int> >(nEdges[0], std::vector<int>(1, tri)));
+        edges.insert(std::pair<Mesh::edge, std::vector<int> >(nEdges[0], std::vector<int>(1, tri)));
     } else edges[nEdges[0]].push_back(tri);
     if (edges.find(nEdges[1]) == edges.end()) {
-        edges.insert(std::pair<Mesh::vectPair, std::vector<int> >(nEdges[1], std::vector<int>(1, tri)));
+        edges.insert(std::pair<Mesh::edge, std::vector<int> >(nEdges[1], std::vector<int>(1, tri)));
     } else edges[nEdges[1]].push_back(tri);
     if (edges.find(nEdges[2]) == edges.end()) {
-        edges.insert(std::pair<Mesh::vectPair, std::vector<int> >(nEdges[2], std::vector<int>(1, tri)));
+        edges.insert(std::pair<Mesh::edge, std::vector<int> >(nEdges[2], std::vector<int>(1, tri)));
     } else edges[nEdges[2]].push_back(tri);
     return nEdges;
 }
 
-const std::map<Mesh::vectPair, std::vector<int> > &Mesh::getEdges() const {
+const std::map<Mesh::edge, std::vector<int> > &Mesh::getEdges() const {
     return edges;
-}
-
-void Mesh::setEdges(const std::map<Mesh::vectPair, std::vector<int> > &edges) {
-    Mesh::edges = edges;
-}
-
-const std::map<int, std::vector<int> > &Mesh::getVertTri() const {
-    return vertTri;
-}
-
-void Mesh::setVertTri(const std::map<int, std::vector<int> > &vertTri) {
-    Mesh::vertTri = vertTri;
 }
 
 std::vector<int> Mesh::adjacentTriangles(int triInd) {
     std::vector<int> vert = triangles[triInd].getVertices();
-    Mesh::vectPair paira(vert[0], vert[1]), pairb(vert[1], vert[2]), pairc(vert[0], vert[2]);
+    Mesh::edge paira(vert[0], vert[1]), pairb(vert[1], vert[2]), pairc(vert[0], vert[2]);
     std::set<int> adjSet;
     adjSet.insert(edges[paira].begin(), edges[paira].end());
     adjSet.insert(edges[pairb].begin(), edges[pairb].end());
     adjSet.insert(edges[pairc].begin(), edges[pairc].end());
     std::vector<int> adj(adjSet.begin(), adjSet.end());
     adj.erase(std::find(adj.begin(), adj.end(), triInd));
-    Mesh::vectPair lol(85, 93);
     return adj;
 }
 
@@ -248,11 +238,10 @@ void Mesh::removeEdges(int triInd, const std::vector<std::pair<int, int> > &rEdg
     }
 }
 
-void Mesh::recalcCircum(int pointInd) {
-    std::vector<int> updTris = vertTri[pointInd];
+void Mesh::recalcCircum(int vertInd) {
+    std::vector<int> updTris = vertTri[vertInd];
     for (int i = 0; i < updTris.size(); i++) {
-        Triangle updTri = triangles[updTris[i]];
-        updTri.setCc(updTri.calcCircumcircle());
+        triangles[updTris[i]].calcCircumcircle();
     }
 }
 
@@ -269,4 +258,18 @@ void Mesh::removeVertTri(int triInd, std::vector<int> rVertInds) {
         std::vector<int> inds = vertTri.find(rVertInds[i])->second;
         inds.erase(std::find(inds.begin(), inds.end(), triInd));
     }
+}
+
+bool Mesh::operator==(const Mesh &rhs) const {
+    return vertexAttributes == rhs.vertexAttributes &&
+           triangleAttributes == rhs.triangleAttributes &&
+           dimensions == rhs.dimensions &&
+           vertices == rhs.vertices &&
+           triangles == rhs.triangles &&
+           edges == rhs.edges &&
+           vertTri == rhs.vertTri;
+}
+
+bool Mesh::operator!=(const Mesh &rhs) const {
+    return !(rhs == *this);
 }

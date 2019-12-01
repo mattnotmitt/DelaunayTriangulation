@@ -23,15 +23,11 @@ public:
 
     Vertex() : index(-1), dimensions(3), owner(), x(0), y(0), z(0),
                attributes(std::vector<double>()) {};
-
+    ~Vertex() {};
     // Getters & Setters
     int getIndex() const;
 
     void setIndex(int index);
-
-    int getDimensions() const;
-
-    void setDimensions(int dimensions);
 
     float getX() const;
 
@@ -48,6 +44,10 @@ public:
     const std::vector<double> &getAttributes() const;
 
     void setAttributes(const std::vector<double> &attributes);
+    // Comparison Operators
+    bool operator==(const Vertex &rhs) const;
+
+    bool operator!=(const Vertex &rhs) const;
 
     // Stream Operators
     friend std::istream &operator>>(std::istream &is, Vertex &vertex);
