@@ -8,6 +8,10 @@
 
 #pragma once
 /**
+ * @file Vertex.hpp
+ * @brief Vertex class header
+ */
+/**
  * Class representing a vertex of a cell
  */
 class Vertex {

@@ -3,7 +3,7 @@
 #include "Triangle.hpp"
 /**
  * @file utils.hpp
- * Utility functions file
+ * @brief Utils namespace header
  */
 
 /**

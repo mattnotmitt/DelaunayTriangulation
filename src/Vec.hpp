@@ -6,6 +6,11 @@
 #include <iostream>
 #include <fstream>
 /**
+ * @file Vec.hpp
+ * @brief Vec class header
+ */
+
+/**
  * Class representing coordinates of a Vector
  * @note Class can only be mutated through recreating vec and setting in parent Vertex class
  */
