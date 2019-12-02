@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>DelaunayTriangulation: Member List</title>
+<title>DelaunayTriangulation: src/Vertex.hpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -63,24 +63,37 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">IMesh Member List</div>  </div>
+<div class="title">Vertex.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="../../d6/df1/classIMesh.html">IMesh</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html#a3eefdf30beb92f67fe10108984b6ae76">edge</a> typedef</td><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html">IMesh</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html#a871dff31c9fbf3fc2daed69c0fe264bf">newEdges</a>(int triInd, const std::vector&lt; int &gt; &amp;vert)=0</td><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html">IMesh</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html#a59e99c63ba06df7fca98a051531e86f2">recalcCircum</a>(int vertInd)=0</td><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html">IMesh</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html#a042899a5f4c03dd88c50acf8da407b67">removeEdges</a>(int triInd, const std::vector&lt; std::pair&lt; int, int &gt; &gt; &amp;rEdge)=0</td><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html">IMesh</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html#a52343b097a63c0bca8b366ccecfd3b69">removeVertTri</a>(int triInd, std::vector&lt; int &gt; rVertInds)=0</td><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html">IMesh</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html#ac9e461fc1b8307307662b4adf4a6b550">resolvePoints</a>(std::vector&lt; int &gt; pointIndices)=0</td><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html">IMesh</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html#ace97217e1ed2bca1d6f68ecc61d15ed7">updateVertTri</a>(int triInd, std::vector&lt; int &gt; vertInds)=0</td><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html">IMesh</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html#a1227ad691cc829ef540b3ff956019423">~IMesh</a>()</td><td class="entry"><a class="el" href="../../d6/df1/classIMesh.html">IMesh</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-</table></div><!-- contents -->
+<p><a class="el" href="../../d2/da0/classVertex.html" title="Class representing a vertex of a cell. ">Vertex</a> class header.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;ostream&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../df/dc3/IMesh_8hpp_source.html">IMesh.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d8/db0/Vec_8hpp_source.html">Vec.hpp</a>&quot;</code><br />
+</div>
+<p><a href="../../d6/db0/Vertex_8hpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da0/classVertex.html">Vertex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class representing a vertex of a cell.  <a href="../../d2/da0/classVertex.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="../../d2/da0/classVertex.html" title="Class representing a vertex of a cell. ">Vertex</a> class header. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
