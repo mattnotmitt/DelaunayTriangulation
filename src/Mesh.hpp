@@ -20,9 +20,9 @@ private:
     int vertexAttributes; /**< Number of attributes in a vertex object */
     int triangleAttributes; /**< Number of attributes in a triangle object */
     int dimensions; /**< Number of dimensions of the mesh */
-
-    std::map<int, Vertex> vertices; /**< Map of vertex indices to vertices they refer to */
     std::map<int, Triangle> triangles; /**< Map of triangle indices to triangles they refer to */
+    std::map<int, Vertex> vertices; /**< Map of vertex indices to vertices they refer to */
+
     /**
      * Map of pairs of vertex indices (representing an edge) to a vector of triangles using them
      *  - Used to find adjacent triangles
@@ -41,11 +41,8 @@ public:
     Mesh() : vertexAttributes(0), triangleAttributes(0), dimensions(3) {};
     /**
      * Default destructor
-
-    void setVec(const Vec &vec);
      */
     ~Mesh() {};
-
     // Functionality
     /**
      * Implementation of IMesh::resolvePoints
@@ -111,11 +108,19 @@ public:
      * @param rVertInds Old indices used by Triangle
      */
     void removeVertTri(int triInd, std::vector<int> rVertInds);
-    template <typename T, typename U>
-    double integrate(T func, U interp) {
+    /**
+     * Estimate the integral of the function func over the mesh
+     * @tparam T function with signature double (double, double)
+     * @param func Mathematical function to be integrated
+     * @param interp Function with signature double(T, const Triangle&) which will integrate the function over a triangle
+     *  Examples are Utils::constantValueApprox and Utils::linearInterpolationApprox
+     * @return Estimation of the integral
+     */
+    template <typename T>
+    double integrate(T func, double (*interp)(T, const Triangle&)) {
         double res = 0;
         for (int i = 0; i < triangles.size(); i++) {
-            res += interp(func, triangles[i]);
+            res += std::abs(interp(func, triangles[i]));
         }
         return res;
     };

@@ -99,23 +99,21 @@ std::ofstream &operator<<(std::ofstream &ofs, Triangle &triangle) {
 
 void Triangle::calcCircumcircle() {
     // Fetch coordinates of triangle's points
-    std::vector<Vec> resVerts = owner->resolvePoints(vertices);
-    std::vector<double> centre = std::vector<double>(3);
+    std::vector<Vec> vecs = owner->resolvePoints(vertices);
     Eigen::Matrix3d m;
     // Instantiate the rhs matrix
-    m << resVerts[0].getX(), resVerts[0].getY(), 1,
-            resVerts[1].getX(), resVerts[1].getY(), 1,
-            resVerts[2].getX(), resVerts[2].getY(), 1;
+    m << vecs[0].getX(), vecs[0].getY(), 1,
+            vecs[1].getX(), vecs[1].getY(), 1,
+            vecs[2].getX(), vecs[2].getY(), 1;
     // Instantiate the lhs vector
-    Eigen::Vector3d v(pow(resVerts[0].getX(), 2) + pow(resVerts[0].getY(), 2),
-                      pow(resVerts[1].getX(), 2) + pow(resVerts[1].getY(), 2),
-                      pow(resVerts[2].getX(), 2) + pow(resVerts[2].getY(), 2)
-    );
+    Eigen::Vector3d v(vecs[0].getX() * vecs[0].getX() + vecs[0].getY() * vecs[0].getY(),
+                      vecs[1].getX() * vecs[1].getX() + vecs[1].getY() * vecs[1].getY(),
+                      vecs[2].getX() * vecs[2].getX() + vecs[2].getY() * vecs[2].getY());
     Eigen::Vector3d o = m.colPivHouseholderQr().solve(v); // Solve for O
     Triangle::circumcircle circc = {};
     circc.x = o(0) / 2.;
     circc.y = o(1) / 2.;
-    circc.radius = std::sqrt(o(2) + std::pow(circc.x, 2) + std::pow(circc.y, 2));
+    circc.radius = std::sqrt(o(2) + circc.x * circc.x + circc.y * circc.y);
     setCc(circc);
 }
 /**
@@ -132,7 +130,9 @@ bool Triangle::circumcircleContainsPoint(const Eigen::Vector2d &p) const {
 }
 
 /**
- * @details Given a point @f$r = \left(\begin{matrix}x \\ y\end{matrix}\right)@f$ and a Triangle made up of points @f$r_1, r_2, r_3@f$ where @f$r_i = \left(\begin{matrix}x_i\\ y_i\end{matrix}\right)@f$, the barycentric coordinates of p, @f$(\lambda_1, \lambda_2, \lambda_3)@f$ can be determined
+ * @details Given a point @f$r = \left(\begin{matrix}x \\ y\end{matrix}\right)@f$ and a Triangle made up of
+ * points @f$r_1, r_2, r_3@f$ where @f$r_i = \left(\begin{matrix}x_i\\ y_i\end{matrix}\right)@f$,
+ * the barycentric coordinates of p, @f$(\lambda_1, \lambda_2, \lambda_3)@f$ can be determined
 @f[
 \left(\begin{matrix}\lambda_1 \\ \lambda_2\end{matrix}\right) = \left(\begin{matrix}
 x_1-x_3 & x_2-x_3 \\
@@ -193,8 +193,6 @@ bool Triangle::operator!=(const Triangle &rhs) const {
     return !(rhs == *this);
 }
 
-Triangle::~Triangle() {}
-
 std::ostream &operator<<(std::ostream &os, Triangle &triangle) {
     std::vector<Vec> vecs = triangle.owner->resolvePoints(triangle.vertices);
     os << "Triangle " << triangle.index << " is made up of points "  << vecs[0] << ", " << vecs[1] << ", " << vecs[2] << ".";
@@ -207,5 +205,9 @@ double Triangle::area() const {
     Eigen::Vector2d b(verts[1].getX(), verts[1].getY());
     Eigen::Vector2d c(verts[2].getX(), verts[2].getY());
     return .5 * (a-b).norm()*(b-c).norm();
+}
+
+IMesh *Triangle::getOwner() const {
+    return owner;
 }
 

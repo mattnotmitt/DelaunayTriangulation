@@ -11,9 +11,9 @@
  */
 class Vec {
 private:
-    float x; ///< x coordinate
-    float y; ///< y coordinate
-    float z; ///< z coordinate
+    double x; ///< x coordinate
+    double y; ///< y coordinate
+    double z; ///< z coordinate
     int dimensions; ///< number of dimensions in mesh
 public:
     /**
@@ -37,17 +37,17 @@ public:
      * Accessor to private member #x
      * @return x coordinate
      */
-    float getX() const;
+    double getX() const;
     /**
      * Accessor to private member #y
      * @return y coordinate
      */
-    float getY() const;
+    double getY() const;
     /**
      * Accessor to private member #z
      * @return z coordinate
      */
-    float getZ() const;
+    double getZ() const;
     /**
      * Accessor to private member #dimensions
      * @return number of dimensions
