@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Setup
+        run: sudo apt install doxygen -y
       - name: Build Docs
         run: doxygen Doxyfile
       - name: Deploy Docs
