@@ -12,7 +12,9 @@ jobs:
           cmake ..
           make -j2
       - name: Test
-        run: ./DT
+        run: |
+          cd build
+          make test
   docs:
     runs-on: ubuntu-latest
     steps:
