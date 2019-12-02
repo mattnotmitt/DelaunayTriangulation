@@ -133,15 +133,15 @@ bool Triangle::circumcircleContainsPoint(const Eigen::Vector2d &p) const {
  * @details Given a point @f$r = \left(\begin{matrix}x \\ y\end{matrix}\right)@f$ and a Triangle made up of
  * points @f$r_1, r_2, r_3@f$ where @f$r_i = \left(\begin{matrix}x_i\\ y_i\end{matrix}\right)@f$,
  * the barycentric coordinates of p, @f$(\lambda_1, \lambda_2, \lambda_3)@f$ can be determined
-@f[
-\left(\begin{matrix}\lambda_1 \\ \lambda_2\end{matrix}\right) = \left(\begin{matrix}
-x_1-x_3 & x_2-x_3 \\
-y_1-y_3 & y_2-y_3 \\
-\end{matrix}\right)^{-1} \left( \left(\begin{matrix}x \\ y\end{matrix}\right)-\left(\begin{matrix}x_3\\ y_3\end{matrix}\right) \right)
-@f]
-@f[
-	\lambda_3 = 1 - \lambda_1 - \lambda_2
-@f]
+ * @f[
+ * \left(\begin{matrix}\lambda_1 \\ \lambda_2\end{matrix}\right) = \left(\begin{matrix}
+ * x_1-x_3 & x_2-x_3 \\
+ * y_1-y_3 & y_2-y_3 \\
+ * \end{matrix}\right)^{-1} \left( \left(\begin{matrix}x \\ y\end{matrix}\right)-\left(\begin{matrix}x_3\\ y_3\end{matrix}\right) \right)
+ * @f]
+ * @f[
+ * 	\lambda_3 = 1 - \lambda_1 - \lambda_2
+ * @f]
  */
 
 Eigen::Vector3d Triangle::barycentric(const Eigen::Vector2d &p) const {
