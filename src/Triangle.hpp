@@ -50,7 +50,7 @@ public:
     /**
      * Default destructor
      */
-    ~Triangle();
+    ~Triangle() {};
     // Functionality
     /**
      * Calculate the circumcircle of the Triangle
@@ -74,6 +74,10 @@ public:
      * @return Whether the triangle contains the point
      */
     bool containsPoint(const Eigen::Vector2d &p) const;
+    /**
+     * Calculate the area of the triangle in 2d (x & y coords)
+     * @return area of triangle
+     */
     double area() const;
     // Getters & Setters
     /**
@@ -126,7 +130,11 @@ public:
      * @param edges vector of edges making up the triangle
      */
     void setEdges(const std::vector<IMesh::edge> &edges);
-
+    /**
+     * Accessor for private member #owner
+     * @return pointer to owning Mesh interface class
+     */
+    IMesh *getOwner() const;
     // Comparison Operators
     /**
      * Equality operator

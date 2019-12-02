@@ -5,15 +5,15 @@
 #include "Vec.hpp"
 #include <iomanip>
 
-float Vec::getX() const {
+double Vec::getX() const {
     return x;
 }
 
-float Vec::getY() const {
+double Vec::getY() const {
     return y;
 }
 
-float Vec::getZ() const {
+double Vec::getZ() const {
     return z;
 }
 

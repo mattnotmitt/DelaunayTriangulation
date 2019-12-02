@@ -192,7 +192,8 @@ bool Mesh::isDelaunay() {
         Eigen::Vector2d vert(vertices[i].getVec().getX(), vertices[i].getVec().getY());
         for (int j = 0; j++ < triangles.size(); j++) {
             if (triangles[j].circumcircleContainsPoint(vert)) {
-                //std::cout << j << ":" << triangles[j].getCc().x << "," << triangles[j].getCc().y << std::endl;
+                //std::cout << j << ": " << i << ": " << vertices[i] << ": " << triangles[j].getCc().x << "," << triangles[j].getCc().y << "," << triangles[j].getCc().radius << std::endl;
+                //std::cout << triangles[j] << std::endl;
                 is = false;
                 return is;
             }
@@ -236,8 +237,10 @@ std::vector<int> Mesh::adjacentTriangles(int triInd) {
 
 void Mesh::removeEdges(int triInd, const std::vector<std::pair<int, int> > &rEdge) {
     for (int i = 0; i < rEdge.size(); i++) {
-        std::vector<int> inds = edges.find(rEdge[i])->second;
-        inds.erase(std::find(inds.begin(), inds.end(), triInd));
+        std::vector<int> inds = edges[rEdge[i]];
+        // Sorry about this but you won't give us auto :angery:
+        __gnu_cxx::__normal_iterator<int *, std::vector<int> > ind = std::find(inds.begin(), inds.end(), triInd);
+        if (ind != inds.end()) inds.erase(ind);
     }
 }
 
@@ -258,8 +261,9 @@ void Mesh::updateVertTri(int triInd, std::vector<int> vertInds) {
 
 void Mesh::removeVertTri(int triInd, std::vector<int> rVertInds) {
     for (int i = 0; i < rVertInds.size(); i++) {
-        std::vector<int> inds = vertTri.find(rVertInds[i])->second;
-        inds.erase(std::find(inds.begin(), inds.end(), triInd));
+        std::vector<int> inds = vertTri[rVertInds[i]];
+        __gnu_cxx::__normal_iterator<int *, std::vector<int> > ind = std::find(inds.begin(), inds.end(), triInd);
+        if (ind != inds.end()) inds.erase(ind);
     }
 }
 
