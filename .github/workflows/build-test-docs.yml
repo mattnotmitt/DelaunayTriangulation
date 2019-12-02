@@ -14,7 +14,7 @@ jobs:
       - name: Test
         run: |
           cd build
-          make test
+          ./DT
   docs:
     runs-on: ubuntu-latest
     steps:
