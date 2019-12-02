@@ -7,6 +7,11 @@
 
 #pragma once
 /**
+ * @file Triangle.hpp
+ * @brief Triangle class header
+ */
+
+/**
  * Class representing a polygon with 3 points and its member functions
  */
 class Triangle {

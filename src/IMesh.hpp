@@ -4,7 +4,11 @@
 
 #pragma once
 #include "Vec.hpp"
-/**const
+/**
+ * @file IMesh.hpp
+ * @brief IMesh class header
+ */
+/**
  * Shallow class allowing Mesh to be imported in classes which Mesh owns
  */
 class IMesh {

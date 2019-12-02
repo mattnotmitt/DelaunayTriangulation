@@ -10,7 +10,10 @@
 #include "IMesh.hpp"
 
 #pragma once
-
+/**
+ * @file Mesh.hpp
+ * @brief Mesh class header
+ */
 // Whole program could (?) be sped up using DCEL https://en.wikipedia.org/wiki/Doubly_connected_edge_list
 /**
  * Parent class of all objects, contains full triangulation and its constituent parts
