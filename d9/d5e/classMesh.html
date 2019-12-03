@@ -99,9 +99,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d5e/classMesh.html#a5efe4da1a4c0971cfb037bd70304c303">~Mesh</a> ()</td></tr>
 <tr class="memdesc:a5efe4da1a4c0971cfb037bd70304c303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
 <tr class="separator:a5efe4da1a4c0971cfb037bd70304c303"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f74649c7bfbba43a09695cc1b7e167c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d5/db1/classVec.html">Vec</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d5e/classMesh.html#a8f74649c7bfbba43a09695cc1b7e167c">resolvePoints</a> (std::vector&lt; int &gt; pointIndices)</td></tr>
-<tr class="memdesc:a8f74649c7bfbba43a09695cc1b7e167c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of <a class="el" href="../../d6/df1/classIMesh.html#ac9e461fc1b8307307662b4adf4a6b550" title="Resolves vector of vertex indices to vector of vertex pointers. ">IMesh::resolvePoints</a> Resolves vector of vertex indices to vector of vertex pointers.  <a href="#a8f74649c7bfbba43a09695cc1b7e167c">More...</a><br /></td></tr>
-<tr class="separator:a8f74649c7bfbba43a09695cc1b7e167c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c81bd6a817357bb5f2ced86b96aef7d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d5/db1/classVec.html">Vec</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d5e/classMesh.html#a9c81bd6a817357bb5f2ced86b96aef7d">resolvePoints</a> (std::vector&lt; int &gt; vertInds)</td></tr>
+<tr class="memdesc:a9c81bd6a817357bb5f2ced86b96aef7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of <a class="el" href="../../d6/df1/classIMesh.html#a110fc069aba60ea5c602fa6ee1166882" title="Resolves vector of vertex indices to vector of vertex pointers. ">IMesh::resolvePoints</a> Resolves vector of vertex indices to vector of vertex pointers.  <a href="#a9c81bd6a817357bb5f2ced86b96aef7d">More...</a><br /></td></tr>
+<tr class="separator:a9c81bd6a817357bb5f2ced86b96aef7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a039929aca5d75d90ba04b1c0cdb696c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d5e/classMesh.html#a039929aca5d75d90ba04b1c0cdb696c3">isDelaunay</a> ()</td></tr>
 <tr class="memdesc:a039929aca5d75d90ba04b1c0cdb696c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether mesh is Delauney.  <a href="#a039929aca5d75d90ba04b1c0cdb696c3">More...</a><br /></td></tr>
 <tr class="separator:a039929aca5d75d90ba04b1c0cdb696c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -722,8 +722,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a8f74649c7bfbba43a09695cc1b7e167c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f74649c7bfbba43a09695cc1b7e167c">&#9670;&nbsp;</a></span>resolvePoints()</h2>
+<a id="a9c81bd6a817357bb5f2ced86b96aef7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c81bd6a817357bb5f2ced86b96aef7d">&#9670;&nbsp;</a></span>resolvePoints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -735,7 +735,7 @@ template&lt;typename T &gt; </div>
           <td class="memname">std::vector&lt; <a class="el" href="../../d5/db1/classVec.html">Vec</a> &gt; Mesh::resolvePoints </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
-          <td class="paramname"><em>pointIndices</em></td><td>)</td>
+          <td class="paramname"><em>vertInds</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -746,10 +746,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implementation of <a class="el" href="../../d6/df1/classIMesh.html#ac9e461fc1b8307307662b4adf4a6b550" title="Resolves vector of vertex indices to vector of vertex pointers. ">IMesh::resolvePoints</a> Resolves vector of vertex indices to vector of vertex pointers. </p>
+<p>Implementation of <a class="el" href="../../d6/df1/classIMesh.html#a110fc069aba60ea5c602fa6ee1166882" title="Resolves vector of vertex indices to vector of vertex pointers. ">IMesh::resolvePoints</a> Resolves vector of vertex indices to vector of vertex pointers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pointIndices</td><td>Vector of indices of vertexes </td></tr>
+    <tr><td class="paramname">vertInds</td><td>Vector of indices of vertexes </td></tr>
   </table>
   </dd>
 </dl>
@@ -761,7 +761,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="../../d6/df1/classIMesh.html#ac9e461fc1b8307307662b4adf4a6b550">IMesh</a>.</p>
+<p>Implements <a class="el" href="../../d6/df1/classIMesh.html#a110fc069aba60ea5c602fa6ee1166882">IMesh</a>.</p>
 
 </div>
 </div>

@@ -101,9 +101,9 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df1/classIMesh.html#a1227ad691cc829ef540b3ff956019423">~IMesh</a> ()</td></tr>
 <tr class="memdesc:a1227ad691cc829ef540b3ff956019423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
 <tr class="separator:a1227ad691cc829ef540b3ff956019423"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9e461fc1b8307307662b4adf4a6b550"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="../../d5/db1/classVec.html">Vec</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df1/classIMesh.html#ac9e461fc1b8307307662b4adf4a6b550">resolvePoints</a> (std::vector&lt; int &gt; pointIndices)=0</td></tr>
-<tr class="memdesc:ac9e461fc1b8307307662b4adf4a6b550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves vector of vertex indices to vector of vertex pointers.  <a href="#ac9e461fc1b8307307662b4adf4a6b550">More...</a><br /></td></tr>
-<tr class="separator:ac9e461fc1b8307307662b4adf4a6b550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110fc069aba60ea5c602fa6ee1166882"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="../../d5/db1/classVec.html">Vec</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df1/classIMesh.html#a110fc069aba60ea5c602fa6ee1166882">resolvePoints</a> (std::vector&lt; int &gt; vertInds)=0</td></tr>
+<tr class="memdesc:a110fc069aba60ea5c602fa6ee1166882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves vector of vertex indices to vector of vertex pointers.  <a href="#a110fc069aba60ea5c602fa6ee1166882">More...</a><br /></td></tr>
+<tr class="separator:a110fc069aba60ea5c602fa6ee1166882"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59e99c63ba06df7fca98a051531e86f2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df1/classIMesh.html#a59e99c63ba06df7fca98a051531e86f2">recalcCircum</a> (int vertInd)=0</td></tr>
 <tr class="memdesc:a59e99c63ba06df7fca98a051531e86f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalculate the <a class="el" href="../../d2/d51/classTriangle.html#d9/dc7/structTriangle_1_1circumcircle" title="Circumcircle object. ">Triangle::circumcircle</a> of all Triangles using vertex represented by vertInd.  <a href="#a59e99c63ba06df7fca98a051531e86f2">More...</a><br /></td></tr>
 <tr class="separator:a59e99c63ba06df7fca98a051531e86f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -304,8 +304,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=".
 
 </div>
 </div>
-<a id="ac9e461fc1b8307307662b4adf4a6b550"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9e461fc1b8307307662b4adf4a6b550">&#9670;&nbsp;</a></span>resolvePoints()</h2>
+<a id="a110fc069aba60ea5c602fa6ee1166882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a110fc069aba60ea5c602fa6ee1166882">&#9670;&nbsp;</a></span>resolvePoints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -317,7 +317,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=".
           <td class="memname">virtual std::vector&lt;<a class="el" href="../../d5/db1/classVec.html">Vec</a>&gt; IMesh::resolvePoints </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
-          <td class="paramname"><em>pointIndices</em></td><td>)</td>
+          <td class="paramname"><em>vertInds</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -331,7 +331,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=".
 <p>Resolves vector of vertex indices to vector of vertex pointers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pointIndices</td><td>Vector of indices of vertexes </td></tr>
+    <tr><td class="paramname">vertInds</td><td>Vector of indices of vertexes </td></tr>
   </table>
   </dd>
 </dl>
@@ -343,7 +343,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=".
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="../../d9/d5e/classMesh.html#a8f74649c7bfbba43a09695cc1b7e167c">Mesh</a>.</p>
+<p>Implemented in <a class="el" href="../../d9/d5e/classMesh.html#a9c81bd6a817357bb5f2ced86b96aef7d">Mesh</a>.</p>
 
 </div>
 </div>
