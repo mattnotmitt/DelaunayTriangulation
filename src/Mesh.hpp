@@ -50,11 +50,11 @@ public:
     /**
      * Implementation of IMesh::resolvePoints
      * Resolves vector of vertex indices to vector of vertex pointers
-     * @param pointIndices Vector of indices of vertexes
+     * @param vertInds Vector of indices of vertexes
      * @return Vector of coordinates matching the indices given by pointIndices
      * @throw std::runtime_error if index is out of range of valid vertices
      */
-    std::vector<Vec> resolvePoints(std::vector<int> pointIndices);
+    std::vector<Vec> resolvePoints(std::vector<int> vertInds);
     /**
      * Checks whether mesh is Delauney
      * @return bool representing whether or not mesh is Delauney

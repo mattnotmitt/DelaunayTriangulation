@@ -110,9 +110,25 @@ TEST_CASE("Can find owning triangle", "[own]") {
 TEST_CASE("Is Delaunay", "[delaunay]") {
     Mesh defMesh;
     std::ifstream infile;
-    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#3.tri");
+    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
     infile >> defMesh;
     infile.close();
+    REQUIRE(!defMesh.isDelaunay());
+    Mesh defMesh1;
+    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#2.tri");
+    infile >> defMesh1;
+    infile.close();
+    REQUIRE(!defMesh1.isDelaunay());
+    Mesh defMesh2;
+    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#3.tri");
+    infile >> defMesh2;
+    infile.close();
+    REQUIRE(defMesh2.isDelaunay());
+    Mesh defMesh3;
+    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#4.tri");
+    infile >> defMesh3;
+    infile.close();
+    REQUIRE(!defMesh3.isDelaunay());
 }
 
 TEST_CASE("Is Delaunay Fails", "[delaunay][error]") {
@@ -122,11 +138,6 @@ TEST_CASE("Is Delaunay Fails", "[delaunay][error]") {
     infile >> defMesh;
     infile.close();
     REQUIRE_THROWS_WITH(defMesh.isDelaunay(), "Cannot check if mesh is Delaunay Triangulation, no triangles defined.");
-    Mesh defMesh1;
-    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#4.tri");
-    infile >> defMesh1;
-    infile.close();
-    REQUIRE(!defMesh1.isDelaunay());
 }
 
 double func (double x, double y) {return x*3 + y*3;}

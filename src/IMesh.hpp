@@ -23,11 +23,11 @@ public:
     virtual ~IMesh() {};
     /**
      * Resolves vector of vertex indices to vector of vertex pointers
-     * @param pointIndices Vector of indices of vertexes
+     * @param vertInds Vector of indices of vertexes
      * @return Vector of pointers to vertexes matching the indices given by pointIndices
      * @throw std::runtime_error if index is out of range of valid vertices
      */
-    virtual std::vector<Vec> resolvePoints(std::vector<int> pointIndices) = 0;
+    virtual std::vector<Vec> resolvePoints(std::vector<int> vertInds) = 0;
     /**
      * Recalculate the Triangle::circumcircle of all Triangles using vertex represented by vertInd
      * - called after coordinates of a Vertex changed using mutator
