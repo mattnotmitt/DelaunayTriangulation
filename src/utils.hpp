@@ -59,7 +59,7 @@ namespace Utils {
      * Given the barymetric coordinates of the point in the triangle @f$(\lambda_1, \lambda_2, \lambda_3)@f$
      * and a Triangle made up of points @f$r_1, r_2, r_3@f$ where @f$r_i = (x_i, y_i)@f$,
      * @f[
-     * \iint_T dxdy f(x,y) \left(\lambda_1\frac{f(x_1,y_1)}{A_T} + \lambda_2\frac{f(x_2,y_2)}{A_T} + \lambda_3f\frac{(x_3,y_3)}{A_T}\right)
+     * \iint_T dxdy f(x,y) \approx \lambda_1\frac{f(x_1,y_1)}{A_T} + \lambda_2\frac{f(x_2,y_2)}{A_T} + \lambda_3f\frac{(x_3,y_3)}{A_T}
      * @f]
      * @tparam T function of signature double(double, double)
      * @param func numerical function returning value at point @f$(x,y)@f$
