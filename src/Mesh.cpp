@@ -148,15 +148,15 @@ std::ifstream &operator>>(std::ifstream &ifs, Mesh &mesh) {
 
 std::ofstream &operator<<(std::ofstream &ofs, Mesh &mesh) {
     std::stringstream ss;
-    ss << mesh.vertices.size() << " " << mesh.dimensions << " " << mesh.vertexAttributes;
-    ofs << ss.str().c_str() << "\n";
+    if (mesh.vertices.empty()) {
+        return ofs;
+    }
+    ofs << mesh.vertices.size() << " " << mesh.dimensions << " " << mesh.vertexAttributes << std::endl;
     for (int i = 0; i < mesh.vertices.size(); i++) {
         ofs << mesh.vertices.at(i);
     }
     if (!mesh.triangles.empty()) {
-        ss.str("");
-        ss << mesh.triangles.size() << " " << 3 << " " << mesh.triangleAttributes;
-        ofs << ss.str().c_str() << "\n";
+        ofs << mesh.triangles.size() << " " << 3 << " " << mesh.triangleAttributes << std::endl;
         for (int i = 0; i < (int) mesh.triangles.size(); i++) {
             ofs << mesh.triangles.at(i);
         }
@@ -255,7 +255,7 @@ std::vector<int> Mesh::adjacentTriangles(int triInd) {
     return adj;
 }
 
-void Mesh::removeEdges(int triInd, const std::vector<std::pair<int, int> > &rEdge) {
+void Mesh::removeEdges(int triInd, const std::vector<edge> &rEdge) {
     for (int i = 0; i < rEdge.size(); i++) {
         std::vector<int> inds = edges[rEdge[i]];
         std::vector<int>::iterator ind = std::find(inds.begin(), inds.end(), triInd);

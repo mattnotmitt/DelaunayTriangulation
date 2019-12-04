@@ -99,7 +99,7 @@ public:
     friend std::ostream &operator<<(std::ostream &os, Vertex &vertex);
     /**
      * Output filestream operator
-     * @param os
+     * @param ofs
      * @param vertex
      * @return
      */

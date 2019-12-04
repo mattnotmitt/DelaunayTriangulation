@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup
-        run: sudo apt install doxygen -y
+        run: sudo apt install doxygen graphviz -y
       - name: Build Docs
         run: doxygen Doxyfile
       - name: Deploy Docs
