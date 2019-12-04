@@ -175,7 +175,7 @@ template&lt;typename T &gt; </div>
 
 <p>Approximates integral of func over triangle using linear interpolation approximation. </p>
 <p>The integral of \( f(x,y) \) can be approximated as the value of the function at any point in the triangle weighted by the triangle's area \( A_T \) Given the barymetric coordinates of the point in the triangle \((\lambda_1, \lambda_2, \lambda_3)\) and a <a class="el" href="../../d2/d51/classTriangle.html" title="Class representing a polygon with 3 points and its member functions. ">Triangle</a> made up of points \(r_1, r_2, r_3\) where \(r_i = (x_i, y_i)\), </p><p class="formulaDsp">
-\[ \iint_T dxdy f(x,y) \approx A_T \left(\lambda_1f(x_1,y_1) + \lambda_2f(x_2,y_2) + \lambda_3f(x_3,y_3)\right) \]
+\[ \iint_T dxdy f(x,y) \left(\lambda_1\frac{f(x_1,y_1)}{A_T} + \lambda_2\frac{f(x_2,y_2)}{A_T} + \lambda_3f\frac{(x_3,y_3)}{A_T}\right) \]
 </p>
  <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
