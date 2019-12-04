@@ -49,7 +49,7 @@ std::ostream &operator<<(std::ostream &os, Vec &vec) {
 }
 
 std::ofstream &operator<<(std::ofstream &ofs, Vec &vec) {
-    ofs << std::setprecision(6) << " " << vec.x << " " << vec.y;
+    ofs << std::setprecision(6) << vec.x << " " << vec.y;
     if (vec.dimensions == 3) {
         ofs << std::setprecision(6) << " " << vec.z;
     }

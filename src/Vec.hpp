@@ -78,17 +78,18 @@ public:
      */
     friend std::istream &operator>>(std::istream &is, Vec &vec);
     /**
+    * Output filestream operator
+    * @param os
+    * @param vec
+    * @return
+    */
+    friend std::ofstream &operator<<(std::ofstream &os, Vec &vec);
+    /**
      * Output stream operator
      * @param os
      * @param vec
      * @return
      */
     friend std::ostream &operator<<(std::ostream &os, Vec &vec);
-    /**
-     * Output filestream operator
-     * @param os
-     * @param vec
-     * @return
-     */
-    friend std::ofstream &operator<<(std::ofstream &os, Vec &vec);
+
 };
