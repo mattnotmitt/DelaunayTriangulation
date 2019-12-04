@@ -40,13 +40,14 @@ std::ostream &operator<<(std::ostream &os, Vertex &vertex) {
     return os;
 }
 
-std::ofstream &operator<<(std::ofstream &os, Vertex &vertex) {
-    os << vertex.index << " " << vertex.vec;
+std::ofstream &operator<<(std::ofstream &ofs, Vertex &vertex) {
+    ofs << vertex.index << " ";
+    ofs << vertex.vec;
     for (int i = 0; i < vertex.attributes.size(); i++) {
-        os << std::setprecision(12) << " "  << vertex.attributes[i];
+        ofs << std::setprecision(12) << " "  << vertex.attributes[i];
     }
-    os << "\n";
-    return os;
+    ofs << "\n";
+    return ofs;
 }
 
 bool Vertex::operator==(const Vertex &rhs) const {

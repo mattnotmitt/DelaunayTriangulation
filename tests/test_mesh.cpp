@@ -35,7 +35,7 @@ TEST_CASE("Mesh mutator functionality", "[mesh][mutator]") {
     REQUIRE(defMesh.getDimensions() == 3);
 }
 
-TEST_CASE("Mesh is populated from file", "[mesh]") {
+TEST_CASE("Mesh is populated from file", "[mesh][input]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
@@ -49,7 +49,7 @@ TEST_CASE("Mesh is populated from file", "[mesh]") {
     REQUIRE(defMesh.adjacentTriangles(101).size() == 3);
 }
 
-TEST_CASE("Triangulation file can be populated from mesh", "[mesh]") {
+TEST_CASE("Triangulation file can be populated from mesh", "[mesh][input][output]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#4.tri");
@@ -61,7 +61,7 @@ TEST_CASE("Triangulation file can be populated from mesh", "[mesh]") {
     outfile.close();
 }
 
-TEST_CASE("Node file can be populated from mesh", "[mesh]") {
+TEST_CASE("Node file can be populated from mesh", "[mesh][input][output]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/vertex_files/vertices#1.node");
@@ -149,5 +149,5 @@ TEST_CASE("Integrates", "[integrate]") {
     infile >> defMesh;
     infile.close();
     REQUIRE(defMesh.integrate(func, Utils::constantValueApprox) == Approx(3540385.693));
-    REQUIRE(defMesh.integrate(func, Utils::linearInterpolationApprox) == Approx(3540385.693));
+    REQUIRE(defMesh.integrate(func, Utils::linearInterpolationApprox) == Approx(329131.310));
 }

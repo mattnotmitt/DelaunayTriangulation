@@ -1,6 +1,7 @@
 #include <vector>
 #include <catch2/catch.hpp>
 #include "../src/Vertex.hpp"
+#include "../src/Mesh.hpp"
 
 TEST_CASE("Default vertex is constructed", "[vertex][constructor]") {
     Vertex vec;
@@ -19,4 +20,18 @@ TEST_CASE("Vertex mutator functionality", "[vertex][mutator]") {
     vec.setAttributes(attr);
     REQUIRE(vec.getAttributes().size() == 5);
     REQUIRE(vec.getIndex() == 100);
+}
+
+TEST_CASE("Test output stream operator", "[vertex][stream]") {
+    Vertex vex;
+    std::stringstream ss;
+    ss << vex;
+    REQUIRE(ss.str() == "(0, 0, 0)");
+}
+
+TEST_CASE("Test Equality", "[vertex][equality]") {
+    Vertex vex, vex1;
+    REQUIRE(vex == vex1);
+    vex1.setIndex(0);
+    REQUIRE(vex != vex1);
 }

@@ -103,6 +103,6 @@ public:
      * @param vertex
      * @return
      */
-    friend std::ofstream &operator<<(std::ofstream &os, Vertex &vertex);
+    friend std::ofstream &operator<<(std::ofstream &ofs, Vertex &vertex);
 };
 
