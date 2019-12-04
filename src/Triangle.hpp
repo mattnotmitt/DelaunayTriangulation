@@ -38,7 +38,7 @@ private:
     circumcircle cc; ///< Circumcircle of the current triangle
     IMesh *owner; ///< Pointer to interface class of the Mesh the Triangle is part of
     std::vector<double> attributes; ///< Vector of attributes of the Triangle (16 points of precision)
-    std::vector<int> vertices; ///< Vector of vertex indices making up the Triangle
+    std::vector<IMesh::vertInd> vertices; ///< Vector of vertex indices making up the Triangle
     std::vector<IMesh::edge> edges; ///< Vector of edges making up the Triangle
 public:
     // Constructors

@@ -71,7 +71,7 @@ std::ofstream &operator<<(std::ofstream &ofs, Triangle &triangle) {
     for (int i = 0; i < triangle.attributes.size(); i++) {
         ofs << " " << std::setprecision(12) << triangle.attributes[i];
     }
-    ofs << "\n";
+    ofs << std::endl;
     return ofs;
 }
 

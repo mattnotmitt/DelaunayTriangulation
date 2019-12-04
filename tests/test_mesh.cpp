@@ -76,7 +76,7 @@ TEST_CASE("Node file can be populated from mesh", "[mesh][input][output]") {
     REQUIRE(defMesh.getTriangles().empty());
 }
 
-TEST_CASE("Invalid files recognised as such", "[mesh][error]") {
+TEST_CASE("Invalid files recognised as such", "[mesh][input][error]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation_bad_prop.tri");
@@ -96,7 +96,7 @@ TEST_CASE("Invalid files recognised as such", "[mesh][error]") {
     infile.close();
 }
 
-TEST_CASE("Can find owning triangle", "[own]") {
+TEST_CASE("Can find owning triangle", "[mesh][own]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#2.tri");
@@ -107,7 +107,7 @@ TEST_CASE("Can find owning triangle", "[own]") {
     REQUIRE(contain == 12);
 }
 
-TEST_CASE("Is Delaunay", "[delaunay]") {
+TEST_CASE("Is Delaunay", "[mesh][delaunay]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
@@ -131,7 +131,7 @@ TEST_CASE("Is Delaunay", "[delaunay]") {
     REQUIRE(!defMesh3.isDelaunay());
 }
 
-TEST_CASE("Is Delaunay Fails", "[delaunay][error]") {
+TEST_CASE("Is Delaunay Fails", "[mesh][delaunay][error]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/vertex_files/vertices#1.node");
@@ -142,7 +142,7 @@ TEST_CASE("Is Delaunay Fails", "[delaunay][error]") {
 
 double func (double x, double y) {return x*3 + y*3;}
 
-TEST_CASE("Integrates", "[integrate]") {
+TEST_CASE("Integrates", "[mesh][integrate]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");

@@ -46,7 +46,7 @@ std::ofstream &operator<<(std::ofstream &ofs, Vertex &vertex) {
     for (int i = 0; i < vertex.attributes.size(); i++) {
         ofs << std::setprecision(12) << " "  << vertex.attributes[i];
     }
-    ofs << "\n";
+    ofs << std::endl;
     return ofs;
 }
 
