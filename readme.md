@@ -1,5 +1,4 @@
 ## DelaunayTriangulation
-[![time tracker](https://wakatime.com/badge/github/mattnotmitt/DelaunayTriangulation.svg)](https://wakatime.com/badge/github/mattnotmitt/DelaunayTriangulation)
 [![Actions Status](https://github.com/mattnotmitt/DelaunayTriangulation/workflows/Build%2C%20test%20and%20generate%20docs/badge.svg)](https://github.com/mattnotmitt/DelaunayTriangulation/actions)
 
 A C++ Object Oriented data structure with algorithms that could be used to generate a Delaunay triangulation
