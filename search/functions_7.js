@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['newedges',['newEdges',['../d6/df1/classIMesh.html#a871dff31c9fbf3fc2daed69c0fe264bf',1,'IMesh::newEdges()'],['../d9/d5e/classMesh.html#a20ed94ae2e0d8a27ca76b32139083c4f',1,'Mesh::newEdges()']]]
+  ['newedges',['newEdges',['../classIMesh.html#a24fbfd04fe9feceff22242e3ec9f34c5',1,'IMesh::newEdges()'],['../classMesh.html#a48f57b9e2aa32a1df5baa7266cf92d59',1,'Mesh::newEdges()']]]
 ];

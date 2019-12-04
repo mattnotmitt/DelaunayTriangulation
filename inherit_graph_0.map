@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classIMesh.html" title="Shallow class allowing Mesh to be imported in classes which Mesh owns. " alt="" coords="5,5,64,32"/>
+<area shape="rect" id="node2" href="$classMesh.html" title="Parent class of all objects, contains full triangulation and its constituent parts. " alt="" coords="112,5,167,32"/>
+</map>
