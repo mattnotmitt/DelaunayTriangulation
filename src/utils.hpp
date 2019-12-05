@@ -46,7 +46,7 @@ namespace Utils {
      * @param triangle Triangle to approximate integral over
      * @return approximated integral of function over triangle
      */
-    // View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/d4/d3d/namespaceUtils.html#aea35446b52e730679709eefcdf6fc8e2
+    // View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/namespaceUtils.html#aea35446b52e730679709eefcdf6fc8e2
     template<typename T>
     double constantValueApprox(T func, const Triangle &triangle) {
         return triangle.area() * func(triangle.getCc().x, triangle.getCc().y);
@@ -56,24 +56,24 @@ namespace Utils {
      * Approximates integral of func over triangle using linear interpolation approximation
      * @details The integral of @f$ f(x,y) @f$ can be approximated as the value of the function at
      * any point in the triangle weighted by the triangle's area @f$ A_T @f$
-     * Given the barymetric coordinates of the point in the triangle @f$(\lambda_1, \lambda_2, \lambda_3)@f$
+     * Given the barycentric coordinates of the point in the triangle @f$(\lambda_1, \lambda_2, \lambda_3)@f$
      * and a Triangle made up of points @f$r_1, r_2, r_3@f$ where @f$r_i = (x_i, y_i)@f$,
      * @f[
-     * \iint_T dxdy f(x,y) \approx \lambda_1\frac{f(x_1,y_1)}{A_T} + \lambda_2\frac{f(x_2,y_2)}{A_T} + \lambda_3f\frac{(x_3,y_3)}{A_T}
+     * \iint_T dxdy f(x,y) \approx A_T\left(\lambda_1f(x_1,y_1) + \lambda_2f(x_2,y_2) + \lambda_3f(x_3,y_3)\right)
      * @f]
      * @tparam T function of signature double(double, double)
      * @param func numerical function returning value at point @f$(x,y)@f$
      * @param triangle Triangle to approximate integral over
      * @return approximated integral of function over triangle
      */
-    // View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/d4/d3d/namespaceUtils.html#a5795be8719aeb33bdfe657d70ed61207
+    // View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/namespaceUtils.html#a5795be8719aeb33bdfe657d70ed61207
     template<typename T>
     double linearInterpolationApprox(T func, const Triangle &triangle) {
         std::vector<Vec> vecs = triangle.getOwner()->resolvePoints(triangle.getVertices());
         Eigen::Vector3d bar = triangle.barycentric(Eigen::Vector2d(triangle.getCc().x, triangle.getCc().y));
         double area = triangle.area();
-        return ((bar(0) * (func(vecs[0].getX(), vecs[0].getY()) / area)) +
-                (bar(1) * (func(vecs[1].getX(), vecs[1].getY()) / area)) +
-                (bar(2) * (func(vecs[2].getX(), vecs[2].getY()) / area)));
+        return area * ((bar(0)  * func(vecs[0].getX(), vecs[0].getY())) +
+                (bar(1) * func(vecs[1].getX(), vecs[1].getY())) +
+                (bar(2) * func(vecs[2].getX(), vecs[2].getY())));
     }
 }

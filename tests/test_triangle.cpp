@@ -1,4 +1,4 @@
-#include <catch2/catch.hpp>
+#include <catch/catch.hpp>
 #include <fstream>
 #include "../src/utils.hpp"
 #include "../src/Triangle.hpp"
@@ -23,7 +23,7 @@ TEST_CASE("Triangle mutator functionality", "[triangle][mutator]") {
     REQUIRE(tri.getIndex() == 5);
 }
 
-TEST_CASE("Circumcircle functionality", "[triangle][mesh][eigen]") {
+TEST_CASE("Circumcircle functionality", "[triangle][mesh][eigen][contain]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#2.tri");

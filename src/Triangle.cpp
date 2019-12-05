@@ -100,7 +100,7 @@ std::ofstream &operator<<(std::ofstream &ofs, Triangle &triangle) {
  *	@f]
  *	So by solving for @f$\mathbf{O}@f$ the circumcircle's data can be found
  */
-// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/d2/d51/classTriangle.html#ae009162df6d89b748cda15a1bec1fd9a
+// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/classTriangle.html#ae009162df6d89b748cda15a1bec1fd9a
 void Triangle::calcCircumcircle() {
     // Fetch coordinates of triangle's points
     std::vector<Vec> vecs = owner->resolvePoints(vertices);
@@ -128,7 +128,7 @@ void Triangle::calcCircumcircle() {
  * @f]
  * If @f$d < @f$ @ref circumcircle.radius then the point is inside the circumcircle
  */
-// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/d2/d51/classTriangle.html#a4c1a5a53120a1bab78d4c512978b48de
+// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/classTriangle.html#a4c1a5a53120a1bab78d4c512978b48de
 bool Triangle::circumcircleContainsPoint(const Eigen::Vector2d &p) const {
     Eigen::Vector2d c(cc.x, cc.y);
     float dist = (p - c).norm();
@@ -149,7 +149,7 @@ bool Triangle::circumcircleContainsPoint(const Eigen::Vector2d &p) const {
  * 	\lambda_3 = 1 - \lambda_1 - \lambda_2
  * @f]
  */
-// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/d2/d51/classTriangle.html#a45f2f690e862dc66d21fabcf890bcfe5
+// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/classTriangle.html#a45f2f690e862dc66d21fabcf890bcfe5
 Eigen::Vector3d Triangle::barycentric(const Eigen::Vector2d &p) const {
     // Barycentric Technique https://en.wikipedia.org/wiki/Barycentric_coordinate_system#Conversion_between_barycentric_and_Cartesian_coordinates
     std::vector<Vec> resVerts = owner->resolvePoints(vertices);
@@ -165,7 +165,7 @@ Eigen::Vector3d Triangle::barycentric(const Eigen::Vector2d &p) const {
  * @details First checks if point is inside pre-computed circumcircle, if it is, computes barycentric coordinates of the point
  * If all barycentric coordinates @f$ \lambda_i >= 0@f$ then point is inside triangle
  */
-// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/d2/d51/classTriangle.html#a4c1a5a53120a1bab78d4c512978b48de
+// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/classTriangle.html#a87f5cfafa361d88d2904f5e29f633021
 bool Triangle::containsPoint(const Eigen::Vector2d &p) const {
     if (!circumcircleContainsPoint(p)) return false; // If not in circumcircle, definitely not in triangle, save computationally expensive vector maths
     Eigen::Vector3d bar = barycentric(p);
@@ -212,7 +212,7 @@ std::ostream &operator<<(std::ostream &os, Triangle &triangle) {
  * A_T = \frac{|\mathbf{A}-\mathbf{B}| |\mathbf{B}-\mathbf{C}|}{2}
  * @f]
  */
-// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/d2/d51/classTriangle.html#a5b86d43152f84325da7c657650e1f3f1
+// View documentation at https://mattnotmitt.github.io/DelaunayTriangulation/classTriangle.html#a5b86d43152f84325da7c657650e1f3f1
 double Triangle::area() const {
     std::vector<Vec> verts = owner->resolvePoints(vertices);
     Eigen::Vector2d a(verts[0].getX(), verts[0].getY());
