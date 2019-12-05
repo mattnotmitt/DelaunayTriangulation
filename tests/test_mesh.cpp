@@ -3,7 +3,7 @@
 //
 #include <fstream>
 #include <string>
-#include <catch2/catch.hpp>
+#include <catch/catch.hpp>
 #include "../src/utils.hpp"
 #include "../src/Triangle.hpp"
 #include "../src/Mesh.hpp"
@@ -46,7 +46,6 @@ TEST_CASE("Mesh is populated from file", "[mesh][input]") {
     REQUIRE(defMesh.getTriangles().size() == 2620);
     REQUIRE(defMesh.getTriangles().at(0).getAttributes().size() == 17);
     REQUIRE(defMesh.getEdges().size() == 4086);
-    REQUIRE(defMesh.adjacentTriangles(101).size() == 3);
 }
 
 TEST_CASE("Triangulation file can be populated from mesh", "[mesh][input][output]") {
@@ -96,18 +95,29 @@ TEST_CASE("Invalid files recognised as such", "[mesh][input][error]") {
     infile.close();
 }
 
-TEST_CASE("Can find owning triangle", "[mesh][own]") {
+TEST_CASE("Can find owning triangle", "[mesh][eigen][contain]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#2.tri");
     infile >> defMesh;
     infile.close();
     // Inside triangle 12, but inside triangle 0's circumcircle
-    int contain = defMesh.containingTriangle(68.125, 0.1);
-    REQUIRE(contain == 12);
+    REQUIRE(defMesh.containingTriangle(68.125, 0.1) == 12);
+    // Circumcentre of triangle 0
+    REQUIRE(defMesh.containingTriangle(67.87956, -0.16581) == 0);
 }
 
-TEST_CASE("Is Delaunay", "[mesh][delaunay]") {
+TEST_CASE("Correct number of adjacent triangles", "[mesh][eigen][triangle]") {
+    Mesh defMesh;
+    std::ifstream infile;
+    Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
+    infile >> defMesh;
+    infile.close();
+    REQUIRE(defMesh.adjacentTriangles(2398).size() == 2);
+    REQUIRE(defMesh.adjacentTriangles(101).size() == 3);
+}
+
+TEST_CASE("Is Delaunay", "[mesh][delaunay][eigen]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
@@ -142,12 +152,13 @@ TEST_CASE("Is Delaunay Fails", "[mesh][delaunay][error]") {
 
 double func (double x, double y) {return x*3 + y*3;}
 
-TEST_CASE("Integrates", "[mesh][integrate]") {
+TEST_CASE("Integrates", "[mesh][eigen][integration]") {
     Mesh defMesh;
     std::ifstream infile;
     Utils::loadFile(infile, "../tests/data/triangulation_files/triangulation#1.tri");
     infile >> defMesh;
     infile.close();
+    // Cannot verify how close these are to the real values
     REQUIRE(defMesh.integrate(func, Utils::constantValueApprox) == Approx(3540385.693));
-    REQUIRE(defMesh.integrate(func, Utils::linearInterpolationApprox) == Approx(329131.310));
+    REQUIRE(defMesh.integrate(func, Utils::linearInterpolationApprox) == Approx(3540385.693));
 }

@@ -1,5 +1,5 @@
 #include <vector>
-#include <catch2/catch.hpp>
+#include <catch/catch.hpp>
 #include "../src/Vertex.hpp"
 #include "../src/Mesh.hpp"
 
