@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: mattnotmitt/doxygen-action@v0.1.2
+      - uses: mattnotmitt/doxygen-action@v0.1.3
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v2.4.0
         env:
