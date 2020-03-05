@@ -1,5 +1,3 @@
-<META HTTP-EQUIV='Content-Security-Policy' CONTENT="img-src github.com;">
-
 ## DelaunayTriangulation
 [![Actions Status](https://github.com/mattnotmitt/DelaunayTriangulation/workflows/Build%2C%20test%20and%20generate%20docs/badge.svg)](https://github.com/mattnotmitt/DelaunayTriangulation/actions)
 
