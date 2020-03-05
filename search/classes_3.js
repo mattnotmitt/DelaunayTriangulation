@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['triangle_84',['Triangle',['../classTriangle.html',1,'']]]
+  ['triangle_85',['Triangle',['../classTriangle.html',1,'']]]
 ];
