@@ -20,10 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Setup
-        run: sudo apt install doxygen graphviz -y
-      - name: Build Docs
-        run: doxygen Doxyfile
+      - uses: mattnotmitt/doxygen-action@v0.1
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v2.4.0
         env:
