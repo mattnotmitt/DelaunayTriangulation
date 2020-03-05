@@ -1,6 +1,7 @@
 <map id="src/IMesh.hpp" name="src/IMesh.hpp">
-<area shape="rect" id="node2" href="$Triangle_8hpp.html" title="Triangle class header. " alt="" coords="8,80,123,107"/>
-<area shape="rect" id="node4" href="$Mesh_8hpp.html" title="Mesh class header. " alt="" coords="123,155,224,181"/>
-<area shape="rect" id="node5" href="$Vertex_8hpp.html" title="Vertex class header. " alt="" coords="197,80,304,107"/>
-<area shape="rect" id="node3" href="$utils_8hpp.html" title="Utils namespace header. " alt="" coords="5,155,99,181"/>
+<area shape="rect" id="node1" title="IMesh class header." alt="" coords="156,5,308,32"/>
+<area shape="rect" id="node2" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="11,80,194,107"/>
+<area shape="rect" id="node4" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="182,155,325,181"/>
+<area shape="rect" id="node5" href="$Vertex_8hpp.html" title="Vertex class header." alt="" coords="269,80,432,107"/>
+<area shape="rect" id="node3" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="5,155,157,181"/>
 </map>

@@ -1,3 +1,4 @@
 <map id="IMesh" name="IMesh">
-<area shape="rect" id="node2" href="$classMesh.html" title="Parent class of all objects, contains full triangulation and its constituent parts. " alt="" coords="5,219,152,531"/>
+<area shape="rect" id="node1" title="Shallow class allowing Mesh to be imported in classes which Mesh owns." alt="" coords="31,5,223,171"/>
+<area shape="rect" id="node2" href="$classMesh.html" title="Parent class of all objects, contains full triangulation and its constituent parts." alt="" coords="5,219,248,531"/>
 </map>

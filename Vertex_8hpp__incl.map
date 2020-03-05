@@ -1,4 +1,9 @@
 <map id="src/Vertex.hpp" name="src/Vertex.hpp">
-<area shape="rect" id="node4" href="$IMesh_8hpp.html" title="IMesh class header. " alt="" coords="181,80,264,107"/>
-<area shape="rect" id="node5" href="$Vec_8hpp.html" title="Vec class header. " alt="" coords="226,155,297,181"/>
+<area shape="rect" id="node1" title="Vertex class header." alt="" coords="140,5,303,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,88,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="113,80,205,107"/>
+<area shape="rect" id="node4" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="229,80,341,107"/>
+<area shape="rect" id="node5" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="286,155,378,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="221,229,323,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="347,229,439,256"/>
 </map>
