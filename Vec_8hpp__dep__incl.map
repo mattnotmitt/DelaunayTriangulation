@@ -1,8 +1,8 @@
 <map id="src/Vec.hpp" name="src/Vec.hpp">
-<area shape="rect" id="node1" title="Vec class header." alt="" coords="225,5,357,32"/>
-<area shape="rect" id="node2" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="159,80,311,107"/>
-<area shape="rect" id="node6" href="$Vertex_8hpp.html" title="Vertex class header." alt="" coords="269,155,432,181"/>
-<area shape="rect" id="node3" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="11,155,194,181"/>
-<area shape="rect" id="node5" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="182,229,325,256"/>
-<area shape="rect" id="node4" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="5,229,157,256"/>
+<area shape="rect" id="node1" title="Vec class header." alt="" coords="157,5,247,32"/>
+<area shape="rect" id="node2" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="106,80,210,107"/>
+<area shape="rect" id="node6" href="$Vertex_8hpp.html" title="Vertex class header." alt="" coords="196,155,301,181"/>
+<area shape="rect" id="node3" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="6,155,121,181"/>
+<area shape="rect" id="node5" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="121,229,221,256"/>
+<area shape="rect" id="node4" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="5,229,97,256"/>
 </map>
