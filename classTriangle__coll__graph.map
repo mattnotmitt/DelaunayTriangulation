@@ -1,8 +1,4 @@
 <map id="Triangle" name="Triangle">
-<area shape="rect" id="node1" title="Class representing a polygon with 3 points and its member functions." alt="" coords="289,233,481,457"/>
-<area shape="rect" id="node2" href="$classIMesh.html" title="Shallow class allowing Mesh to be imported in classes which Mesh owns." alt="" coords="5,5,128,171"/>
-<area shape="rect" id="node3" href="$classTriangle.html#structTriangle_1_1circumcircle" title="Circumcircle object." alt="" coords="152,35,296,141"/>
-<area shape="rect" id="node4" title=" " alt="" coords="321,42,450,134"/>
-<area shape="rect" id="node5" title=" " alt="" coords="474,42,603,134"/>
-<area shape="rect" id="node6" title=" " alt="" coords="627,49,770,127"/>
+<area shape="rect" id="node2" href="$classIMesh.html" title="Shallow class allowing Mesh to be imported in classes which Mesh owns. " alt="" coords="5,5,129,171"/>
+<area shape="rect" id="node3" href="$classTriangle.html#structTriangle_1_1circumcircle" title="Circumcircle object. " alt="" coords="154,35,301,141"/>
 </map>

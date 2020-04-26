@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['delaunaytriangulation_168',['DelaunayTriangulation',['../index.html',1,'']]]
+  ['delaunaytriangulation',['DelaunayTriangulation',['../index.html',1,'']]]
 ];
