@@ -20,9 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: mattnotmitt/doxygen-action@v1
+      - uses: mattnotmitt/doxygen-action@dynamic-latex
         env:
           DT_VERSION: ${{ github.ref }}
+        with:
+          enable-latex: true
+      - run: tree build/docs/latex/
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v3
         with:
