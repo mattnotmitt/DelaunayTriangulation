@@ -21,6 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: mattnotmitt/doxygen-action@v1
+        env:
+          DT_VERSION: GITHUB_REF
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v3
         with:
