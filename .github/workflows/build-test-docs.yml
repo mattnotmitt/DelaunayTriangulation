@@ -20,11 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: mattnotmitt/doxygen-action@dynamic-latex
+      - uses: mattnotmitt/doxygen-action@feature/support_fail_on_warnings
         env:
           DT_VERSION: ${{ github.ref }}
         with:
-          enable-latex: true
+          fail-on-warnings: true
+          warnings-filter: 'FreeSans\|TCL_SUBST'
       - run: ls build/docs/latex/*
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v3
