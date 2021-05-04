@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['getattributes_15',['getAttributes',['../classTriangle.html#a24098e02ee878cd991e4139eb8c75a79',1,'Triangle::getAttributes()'],['../classVertex.html#afa5cdac6c154cca51b999582454bf862',1,'Vertex::getAttributes()']]],
+  ['getattributes_15',['getAttributes',['../classVertex.html#afa5cdac6c154cca51b999582454bf862',1,'Vertex::getAttributes()'],['../classTriangle.html#a24098e02ee878cd991e4139eb8c75a79',1,'Triangle::getAttributes() const']]],
   ['getcc_16',['getCc',['../classTriangle.html#a35e9be6a276d6684fcd29c8faa0fa16f',1,'Triangle']]],
   ['getdimensions_17',['getDimensions',['../classMesh.html#a4d2d585955a33c55bd9dd2e89815e086',1,'Mesh::getDimensions()'],['../classVec.html#a63474a3f23a396409dc6a78841c7a830',1,'Vec::getDimensions()']]],
-  ['getedges_18',['getEdges',['../classMesh.html#aabf6564fa5df87e3e1bc8f8c86caae5a',1,'Mesh::getEdges()'],['../classTriangle.html#a166a0c75b5774d20aa4cd85f3877c1fe',1,'Triangle::getEdges()']]],
+  ['getedges_18',['getEdges',['../classMesh.html#aabf6564fa5df87e3e1bc8f8c86caae5a',1,'Mesh::getEdges()'],['../classTriangle.html#a166a0c75b5774d20aa4cd85f3877c1fe',1,'Triangle::getEdges() const']]],
   ['getindex_19',['getIndex',['../classTriangle.html#a0a8b2f3c2602f6f51666ae3cdfeb07e9',1,'Triangle::getIndex()'],['../classVertex.html#aca5b91100eb8590192dc8a4cf76a4d48',1,'Vertex::getIndex()']]],
   ['getowner_20',['getOwner',['../classTriangle.html#aad669c521f0651f241712147f0110e0f',1,'Triangle']]],
   ['gettriangleattributes_21',['getTriangleAttributes',['../classMesh.html#a3e2e98d0957fcb02aeef06237881a7e8',1,'Mesh']]],
