@@ -88,7 +88,7 @@ Collaboration diagram for Vertex:</div>
 <div class="dyncontent">
 <div class="center"><img src="classVertex__coll__graph.png" border="0" usemap="#aVertex_coll__map" alt="Collaboration graph"/></div>
 <map name="aVertex_coll__map" id="aVertex_coll__map">
-<area shape="rect" title="Class representing a vertex of a cell." alt="" coords="167,307,281,531"/>
+<area shape="rect" title="Class representing a vertex of a cell." alt="" coords="167,307,281,545"/>
 <area shape="rect" href="classIMesh.html" title="Shallow class allowing Mesh to be imported in classes which Mesh owns." alt="" coords="5,42,128,207"/>
 <area shape="rect" title=" " alt="" coords="153,86,295,163"/>
 <area shape="rect" href="classVec.html" title="Class representing coordinates of a Vector." alt="" coords="319,5,446,244"/>
@@ -97,6 +97,9 @@ Collaboration diagram for Vertex:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:af5564744235ea75926cbd75025981adc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVertex.html#af5564744235ea75926cbd75025981adc">Vertex</a> (int <a class="el" href="classVertex.html#a2e35f7521dfd3fdee65dc26879c62f24">index</a>, int dim, <a class="el" href="classIMesh.html">IMesh</a> *<a class="el" href="classVertex.html#a45dace28d11e546e95402063d535f364">owner</a>, float x, float y, float z)</td></tr>
+<tr class="memdesc:af5564744235ea75926cbd75025981adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor populating all.  <a href="classVertex.html#af5564744235ea75926cbd75025981adc">More...</a><br /></td></tr>
+<tr class="separator:af5564744235ea75926cbd75025981adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7f376aca6da9475dd6c09d8eee6ee71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVertex.html#af7f376aca6da9475dd6c09d8eee6ee71">Vertex</a> (int <a class="el" href="classVertex.html#a2e35f7521dfd3fdee65dc26879c62f24">index</a>, int dim, <a class="el" href="classIMesh.html">IMesh</a> *<a class="el" href="classVertex.html#a45dace28d11e546e95402063d535f364">owner</a>)</td></tr>
 <tr class="memdesc:af7f376aca6da9475dd6c09d8eee6ee71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor populating <a class="el" href="classVertex.html#a2e35f7521dfd3fdee65dc26879c62f24" title="Index of the triangle from file.">index</a> and <a class="el" href="classVertex.html#a45dace28d11e546e95402063d535f364" title="Pointer to interface class of the Mesh the Vertex is a part of.">owner</a> and instantiating <a class="el" href="classVertex.html#a31b94759a1596e8bf28c2987ec576a22" title="Vec class storing the coordinates of the vertex.">vec</a>.  <a href="classVertex.html#af7f376aca6da9475dd6c09d8eee6ee71">More...</a><br /></td></tr>
 <tr class="separator:af7f376aca6da9475dd6c09d8eee6ee71"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,8 +170,78 @@ Friends</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class representing a vertex of a cell. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af5564744235ea75926cbd75025981adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5564744235ea75926cbd75025981adc">&#9670;&nbsp;</a></span>Vertex() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vertex::Vertex </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classIMesh.html">IMesh</a> *&#160;</td>
+          <td class="paramname"><em>owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor populating all. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Index of vertex according to file </td></tr>
+    <tr><td class="paramname">dim</td><td>Dimensions in the mesh - passed to <a class="el" href="classVec.html" title="Class representing coordinates of a Vector.">Vec</a> </td></tr>
+    <tr><td class="paramname">owner</td><td>Pointer to <a class="el" href="classMesh.html" title="Parent class of all objects, contains full triangulation and its constituent parts.">Mesh</a> the <a class="el" href="classVertex.html" title="Class representing a vertex of a cell.">Vertex</a> is a part of </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af7f376aca6da9475dd6c09d8eee6ee71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7f376aca6da9475dd6c09d8eee6ee71">&#9670;&nbsp;</a></span>Vertex()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af7f376aca6da9475dd6c09d8eee6ee71">&#9670;&nbsp;</a></span>Vertex() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
