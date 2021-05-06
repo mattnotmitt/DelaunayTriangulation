@@ -1,4 +1,4 @@
-#include <catch/catch.hpp>
+#include <catch2/catch.hpp>
 #include <fstream>
 #include "../src/utils.hpp"
 #include "../src/Triangle.hpp"

@@ -2,7 +2,7 @@
 // Created by mitt on 25/11/2019.
 //
 
-#include <catch/catch.hpp>
+#include <catch2/catch.hpp>
 #include <fstream>
 #include "../src/utils.hpp"
 

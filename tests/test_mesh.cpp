@@ -3,7 +3,7 @@
 //
 #include <fstream>
 #include <string>
-#include <catch/catch.hpp>
+#include <catch2/catch.hpp>
 #include "../src/utils.hpp"
 #include "../src/Triangle.hpp"
 #include "../src/Mesh.hpp"
@@ -55,7 +55,7 @@ TEST_CASE("Triangulation file can be populated from mesh", "[mesh][input][output
     infile >> defMesh;
     infile.close();
     std::ofstream outfile;
-    Utils::loadFile(outfile, "../build/data/triangulation#4_copied.tri");
+    Utils::loadFile(outfile, "data/triangulation#4_copied.tri");
     outfile << defMesh;
     outfile.close();
 }
@@ -67,7 +67,7 @@ TEST_CASE("Node file can be populated from mesh", "[mesh][input][output]") {
     infile >> defMesh;
     infile.close();
     std::ofstream outfile;
-    Utils::loadFile(outfile, "../build/data/vertices#1_copied.node");
+    Utils::loadFile(outfile, "data/vertices#1_copied.node");
     outfile << defMesh;
     outfile.close();
     REQUIRE(defMesh.getVertices().size() == 22);
