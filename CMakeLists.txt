@@ -5,8 +5,9 @@ Include(FetchContent)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS "--coverage")
 
-enable_testing()
 add_subdirectory(external)
+
+enable_testing()
 
 add_library(DTLib src/Mesh.cpp src/Mesh.hpp src/Vertex.cpp src/Vertex.hpp src/Triangle.cpp src/Triangle.hpp src/utils.cpp  src/IMesh.hpp src/Vec.hpp src/Vec.cpp)
 target_link_libraries(DTLib Eigen3::Eigen)
