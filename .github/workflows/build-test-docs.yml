@@ -2,26 +2,12 @@ name: Build, test and generate docs
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Build
-        run: |
-          mkdir build
-          cd build
-          cmake ..
-          make -j2
-      - name: Test
-        run: |
-          cd build
-          make test
   docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - run: mkdir build
-      - uses: mattnotmitt/doxygen-action@master
+      - uses: mattnotmitt/doxygen-action@edge
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v3
         with:
