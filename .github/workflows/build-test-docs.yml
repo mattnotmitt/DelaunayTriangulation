@@ -1,5 +1,7 @@
 name: Build, test and generate docs
-on: [push]
+on: 
+  push: 
+  workflow_dispatch:
 
 jobs:
   docs:
@@ -9,6 +11,7 @@ jobs:
       - run: mkdir build
       - uses: mattnotmitt/doxygen-action@edge
       - name: Deploy Docs
+        if: ${{ github.ref_name == 'main' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
