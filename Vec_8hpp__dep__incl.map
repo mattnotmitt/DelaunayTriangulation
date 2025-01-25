@@ -1,8 +1,16 @@
 <map id="src/Vec.hpp" name="src/Vec.hpp">
-<area shape="rect" id="node1" title="Vec class header." alt="" coords="157,5,247,32"/>
-<area shape="rect" id="node2" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="106,80,210,107"/>
-<area shape="rect" id="node6" href="$Vertex_8hpp.html" title="Vertex class header." alt="" coords="196,155,301,181"/>
-<area shape="rect" id="node3" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="121,229,221,256"/>
-<area shape="rect" id="node4" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="6,155,121,181"/>
-<area shape="rect" id="node5" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="5,229,97,256"/>
+<area shape="rect" id="Node000001" title="Vec class header." alt="" coords="156,5,247,31"/>
+<area shape="rect" id="Node000002" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="106,79,209,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,46,167,80,163,77,184,43"/>
+<area shape="rect" id="Node000006" href="$Vertex_8hpp.html" title="Vertex class header." alt="" coords="195,153,299,178"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="213,45,224,78,246,152,241,153,219,80,208,47"/>
+<area shape="rect" id="Node000003" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="121,226,221,252"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="163,120,173,226,167,226,157,120"/>
+<area shape="rect" id="Node000004" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="6,153,120,178"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="131,117,80,154,77,150,128,112"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="186,112,234,150,230,154,183,116"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="96,185,154,224,151,228,93,190"/>
+<area shape="rect" id="Node000005" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="5,226,97,252"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="61,194,56,226,50,225,56,193"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="225,191,186,228,182,224,221,187"/>
 </map>

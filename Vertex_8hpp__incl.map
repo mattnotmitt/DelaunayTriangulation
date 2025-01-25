@@ -1,9 +1,16 @@
 <map id="src/Vertex.hpp" name="src/Vertex.hpp">
-<area shape="rect" id="node1" title="Vertex class header." alt="" coords="119,5,225,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,64,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="88,80,157,107"/>
-<area shape="rect" id="node4" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="181,80,264,107"/>
-<area shape="rect" id="node5" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="227,155,296,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="179,229,251,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="275,229,341,256"/>
+<area shape="rect" id="Node000001" title="Vertex class header." alt="" coords="118,5,222,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,63,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,34,72,74,69,69,146,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="86,79,155,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,33,140,68,135,65,160,30"/>
+<area shape="rect" id="Node000004" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="179,79,260,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,30,205,65,200,68,176,33"/>
+<area shape="rect" id="Node000005" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="224,153,292,178"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="211,29,246,48,262,61,275,78,280,93,281,109,273,139,268,138,276,109,275,94,270,80,258,65,243,52,209,34"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="228,104,247,138,242,140,223,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="177,226,248,252"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="253,180,231,215,226,212,248,177"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="272,226,337,252"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="268,177,291,212,286,215,263,180"/>
 </map>

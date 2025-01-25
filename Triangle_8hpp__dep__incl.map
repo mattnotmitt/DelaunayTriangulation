@@ -1,5 +1,7 @@
 <map id="src/Triangle.hpp" name="src/Triangle.hpp">
-<area shape="rect" id="node1" title="Triangle class header." alt="" coords="58,5,173,32"/>
-<area shape="rect" id="node2" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="5,80,105,107"/>
-<area shape="rect" id="node3" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="129,80,221,107"/>
+<area shape="rect" id="Node000001" title="Triangle class header." alt="" coords="58,5,172,31"/>
+<area shape="rect" id="Node000002" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="5,79,105,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,44,67,80,63,77,93,41"/>
+<area shape="rect" id="Node000003" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="129,79,221,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,41,167,77,163,80,133,44"/>
 </map>

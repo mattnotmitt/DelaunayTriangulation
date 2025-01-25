@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['getattributes_0',['getAttributes',['../classVertex.html#afa5cdac6c154cca51b999582454bf862',1,'Vertex::getAttributes()'],['../classTriangle.html#a24098e02ee878cd991e4139eb8c75a79',1,'Triangle::getAttributes() const']]],
+  ['getattributes_0',['getAttributes',['../classTriangle.html#a24098e02ee878cd991e4139eb8c75a79',1,'Triangle::getAttributes()'],['../classVertex.html#afa5cdac6c154cca51b999582454bf862',1,'Vertex::getAttributes()']]],
   ['getcc_1',['getCc',['../classTriangle.html#a35e9be6a276d6684fcd29c8faa0fa16f',1,'Triangle']]],
   ['getdimensions_2',['getDimensions',['../classMesh.html#a4d2d585955a33c55bd9dd2e89815e086',1,'Mesh::getDimensions()'],['../classVec.html#a63474a3f23a396409dc6a78841c7a830',1,'Vec::getDimensions()']]],
   ['getedges_3',['getEdges',['../classMesh.html#aabf6564fa5df87e3e1bc8f8c86caae5a',1,'Mesh::getEdges()'],['../classTriangle.html#a166a0c75b5774d20aa4cd85f3877c1fe',1,'Triangle::getEdges() const']]],

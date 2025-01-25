@@ -1,6 +1,9 @@
 <map id="src/IMesh.hpp" name="src/IMesh.hpp">
-<area shape="rect" id="node1" title="IMesh class header." alt="" coords="36,5,140,32"/>
-<area shape="rect" id="node2" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="53,80,123,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,155,77,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="101,155,168,181"/>
+<area shape="rect" id="Node000001" title="IMesh class header." alt="" coords="35,5,138,31"/>
+<area shape="rect" id="Node000002" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="52,79,120,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,31,89,63,84,63,84,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,153,77,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="81,106,59,141,54,138,77,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="100,153,166,178"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="96,103,119,138,115,141,92,106"/>
 </map>

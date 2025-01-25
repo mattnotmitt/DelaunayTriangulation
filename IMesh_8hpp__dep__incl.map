@@ -1,7 +1,13 @@
 <map id="src/IMesh.hpp" name="src/IMesh.hpp">
-<area shape="rect" id="node1" title="IMesh class header." alt="" coords="22,5,126,32"/>
-<area shape="rect" id="node2" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="24,155,124,181"/>
-<area shape="rect" id="node3" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="151,80,266,107"/>
-<area shape="rect" id="node5" href="$Vertex_8hpp.html" title="Vertex class header." alt="" coords="21,80,126,107"/>
-<area shape="rect" id="node4" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="162,155,254,181"/>
+<area shape="rect" id="Node000001" title="IMesh class header." alt="" coords="21,5,124,31"/>
+<area shape="rect" id="Node000002" href="$Mesh_8hpp.html" title="Mesh class header." alt="" coords="23,153,122,178"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="43,42,25,59,11,80,10,100,19,119,36,136,54,150,51,154,32,140,15,122,4,101,6,78,21,56,39,38"/>
+<area shape="rect" id="Node000003" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="149,79,263,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,36,185,76,182,81,108,41"/>
+<area shape="rect" id="Node000005" href="$Vertex_8hpp.html" title="Vertex class header." alt="" coords="21,79,125,105"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="75,46,75,79,70,79,70,46"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="171,115,97,154,94,150,169,110"/>
+<area shape="rect" id="Node000004" href="$utils_8hpp.html" title="Utils namespace header." alt="" coords="160,153,252,178"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="209,120,209,152,203,152,203,120"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="75,120,75,152,70,152,70,120"/>
 </map>

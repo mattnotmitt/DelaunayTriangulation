@@ -1,9 +1,15 @@
 <map id="src/Triangle.hpp" name="src/Triangle.hpp">
-<area shape="rect" id="node1" title="Triangle class header." alt="" coords="79,5,193,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,64,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="89,80,183,107"/>
-<area shape="rect" id="node4" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="208,80,291,107"/>
-<area shape="rect" id="node5" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="215,155,284,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="167,229,239,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="263,229,329,256"/>
+<area shape="rect" id="Node000001" title="Triangle class header." alt="" coords="77,5,191,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,63,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,34,65,72,62,67,115,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="87,79,181,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,31,137,63,131,63,131,31"/>
+<area shape="rect" id="Node000004" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="205,79,287,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="154,29,216,68,213,73,152,34"/>
+<area shape="rect" id="Node000005" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="212,153,280,178"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="249,105,249,137,243,137,243,105"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="165,226,236,252"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="241,180,219,215,214,212,236,177"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="260,226,325,252"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="256,177,279,212,274,215,251,180"/>
 </map>

@@ -1,5 +1,9 @@
 <map id="Vertex" name="Vertex">
-<area shape="rect" id="node1" title="Class representing a vertex of a cell." alt="" coords="84,307,199,545"/>
-<area shape="rect" id="node2" href="$classIMesh.html" title="Shallow class allowing Mesh to be imported in classes which Mesh owns." alt="" coords="5,42,128,207"/>
-<area shape="rect" id="node3" href="$classVec.html" title="Class representing coordinates of a Vector." alt="" coords="153,5,279,244"/>
+<area shape="rect" id="Node000001" title="Class representing a vertex of a cell." alt="" coords="149,358,255,628"/>
+<area shape="rect" id="Node000002" href="$classIMesh.html" title="Shallow class allowing Mesh to be imported in classes which Mesh owns." alt="" coords="5,56,119,244"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,243,145,347,141,349,98,245"/>
+<area shape="rect" id="Node000003" href="$classVec.html" title="Class representing coordinates of a Vector." alt="" coords="143,5,261,295"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,295,205,341,200,341,200,295"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="285,117,416,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="339,184,265,355,260,353,334,182"/>
 </map>

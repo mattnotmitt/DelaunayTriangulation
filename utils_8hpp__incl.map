@@ -1,12 +1,21 @@
 <map id="src/utils.hpp" name="src/utils.hpp">
-<area shape="rect" id="node1" title="Utils namespace header." alt="" coords="77,5,169,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,60,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="84,80,163,107"/>
-<area shape="rect" id="node4" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="187,80,279,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="102,155,161,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="185,155,280,181"/>
-<area shape="rect" id="node7" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="305,155,387,181"/>
-<area shape="rect" id="node8" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="311,229,381,256"/>
-<area shape="rect" id="node9" title=" " alt="" coords="263,304,335,331"/>
-<area shape="rect" id="node10" title=" " alt="" coords="359,304,426,331"/>
+<area shape="rect" id="Node000001" title="Utils namespace header." alt="" coords="76,5,167,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,59,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,34,61,71,57,67,105,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="83,79,160,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,31,124,63,119,63,119,31"/>
+<area shape="rect" id="Node000004" href="$Triangle_8hpp.html" title="Triangle class header." alt="" coords="184,79,275,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="141,29,200,68,197,72,138,34"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="101,153,158,178"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="214,107,160,145,157,141,211,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="182,153,276,178"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="232,105,232,137,227,137,227,105"/>
+<area shape="rect" id="Node000007" href="$IMesh_8hpp.html" title="IMesh class header." alt="" coords="301,153,382,178"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="250,103,311,142,308,146,247,107"/>
+<area shape="rect" id="Node000008" href="$Vec_8hpp.html" title="Vec class header." alt="" coords="307,226,376,252"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="344,179,344,211,339,211,339,179"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="260,300,332,326"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="336,254,314,288,309,285,332,251"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="355,300,421,326"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="351,251,374,285,370,288,347,254"/>
 </map>
